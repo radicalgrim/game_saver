@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ExamplePage extends StatefulWidget {
-  const ExamplePage({Key? key}) : super(key: key);
+class FlutterDemoPage extends StatefulWidget {
+  const FlutterDemoPage({Key? key}) : super(key: key);
 
   // This string is used when telling Flutter Navigation to navigate to this
   // page
-  static const String route = "/example";
+  static const String route = "/demo";
 
   final String title = "Title";
 
   @override
-  State<ExamplePage> createState() => _ExamplePageState();
+  State<FlutterDemoPage> createState() => _FlutterDemoPageState();
 }
 
-class _ExamplePageState extends State<ExamplePage> {
+class _FlutterDemoPageState extends State<FlutterDemoPage> {
   int _counter = 0;
 
   void _incrementCounter() {

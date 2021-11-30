@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:game_saver/pages/example_page.dart';
+import 'package:game_saver/pages/flutter_demo_page.dart';
 import 'package:game_saver/pages/home_page.dart';
+import 'package:game_saver/res/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,13 +25,14 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: ProjectColors.primarySwatch,
       ),
       // This tells flutter the home page of your application
-      home: const HomePage(),
+      home: const FlutterDemoPage(),
       // This tells flutter the different pages in your application
       routes: {
-        ExamplePage.route: (_) => const ExamplePage(),
+        HomePage.route: (_) => const HomePage(),
+        FlutterDemoPage.route: (_) => const FlutterDemoPage(),
       },
     );
   }

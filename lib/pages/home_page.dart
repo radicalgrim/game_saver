@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-// TODO: Delete this before submitting PR
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:game_saver/res/colors.dart';
+import 'package:game_saver/res/strings.dart';
+import 'package:game_saver/res/text_styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,31 +19,52 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text("GameSaver"),
-          ElevatedButton(
-            child: const Text("New Game"),
-            onPressed: () {
-              // TODO: Implement me
-              log("New Game pressed");
-            },
+      backgroundColor: ProjectColors.primarySwatch.shade50,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 120),
+                child: Text(ProjectStrings.appTitle,
+                    style: ProjectTextStyles.appTitleTextStyle),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: ElevatedButton(
+                  child: const Text(ProjectStrings.newGameButton,
+                      style: ProjectTextStyles.buttonLargeTextStyle),
+                  onPressed: () {
+                    // TODO: Implement me
+                    log("New Game pressed");
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: ElevatedButton(
+                  child: const Text(ProjectStrings.scoreboardsButton,
+                      style: ProjectTextStyles.buttonLargeTextStyle),
+                  onPressed: () {
+                    // TODO: Implement me
+                    log("Scoreboards pressed");
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: IconButton(
+                  icon: const Icon(Icons.settings),
+                  color: ProjectColors.primarySwatch.shade700,
+                  onPressed: () {
+                    // TODO: Implement me
+                    log("Game Options icon pressed");
+                  },
+                ),
+              ),
+            ],
           ),
-          ElevatedButton(
-            child: const Text("Scoreboards"),
-            onPressed: () {
-              // TODO: Implement me
-              log("Scoreboards pressed");
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // TODO: Implement me
-              log("Game Options icon pressed");
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
