@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:game_saver/pages/add_players_page.dart';
 import 'package:game_saver/res/colors.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
@@ -37,6 +38,11 @@ class HomePageState extends State<HomePage> {
                   onPressed: () {
                     // TODO: Implement me
                     log("New Game pressed");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddPlayersPage()),
+                    );
                   },
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_saver/pages/add_players_page.dart';
 import 'package:game_saver/pages/flutter_demo_page.dart';
 import 'package:game_saver/pages/home_page.dart';
 import 'package:game_saver/res/colors.dart';
@@ -28,10 +29,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: ProjectColors.primarySwatch,
       ),
       // This tells flutter the home page of your application
-      home: const FlutterDemoPage(),
+      home: const HomePage(),
       // This tells flutter the different pages in your application
       routes: {
         HomePage.route: (_) => const HomePage(),
+        AddPlayersPage.route: (_) => const AddPlayersPage(),
         FlutterDemoPage.route: (_) => const FlutterDemoPage(),
       },
     );

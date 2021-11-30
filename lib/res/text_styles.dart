@@ -9,6 +9,10 @@ class ProjectTextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 65,
       color: ProjectColors.darkTextColor);
+  static final TextStyle pageTitleTextStyle = TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 35,
+      color: ProjectColors.darkTextColor);
   static const TextStyle buttonLargeTextStyle =
       TextStyle(fontSize: 20, color: ProjectColors.lightTextColor);
 }
