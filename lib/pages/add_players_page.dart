@@ -8,9 +8,7 @@ import 'package:game_saver/res/text_styles.dart';
 
 class AddPlayersPage extends StatefulWidget {
   const AddPlayersPage({Key? key}) : super(key: key);
-
   static const String route = "/players";
-
   @override
   AddPlayersPageState createState() => AddPlayersPageState();
 }
@@ -21,6 +19,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
+        // TODO: What text do we want in the app bar, if any?
         title: const Text(ProjectStrings.appTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -29,6 +28,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
           },
         ),
       ),
+      // TODO: Make the page structure look a bit better
       body: SafeArea(
         child: Center(
           child: Column(
@@ -39,6 +39,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
+                // TODO: Add draggable player cards
                 width: 350,
                 height: 400,
                 color: ProjectColors.primarySwatch.shade100,
@@ -46,6 +47,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  // TODO: Replace this with a form
                   Container(
                     width: 300,
                     height: 25,

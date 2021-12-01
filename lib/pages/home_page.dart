@@ -9,9 +9,7 @@ import 'package:game_saver/res/text_styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
   static const String route = "/home";
-
   @override
   HomePageState createState() => HomePageState();
 }
@@ -21,6 +19,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
+      // TODO: Make the page structure look a bit better
       body: SafeArea(
         child: Center(
           child: Column(
@@ -36,8 +35,6 @@ class HomePageState extends State<HomePage> {
                   child: const Text(ProjectStrings.newGameButton,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    // TODO: Implement me
-                    log("New Game pressed");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
