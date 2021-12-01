@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_saver/pages/add_players_page.dart';
+import 'package:game_saver/pages/game_options_page.dart';
 import 'package:game_saver/res/colors.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
@@ -60,8 +61,11 @@ class HomePageState extends State<HomePage> {
                   icon: const Icon(Icons.settings),
                   color: ProjectColors.primarySwatch.shade700,
                   onPressed: () {
-                    // TODO: Implement me
-                    log("Game Options icon pressed");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GameOptionsPage()),
+                    );
                   },
                 ),
               ),
