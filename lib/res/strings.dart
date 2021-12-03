@@ -34,4 +34,12 @@ class ProjectStrings {
 
   // Game Customizations Page
   static const String gameCustomizationHeader = "Customize Your Game";
+  static const String gameCustTitle = "Game Title";
+  static const String gameCustStyle = "Scoring Style";
+  static const String gameCustReqError = "Game Title is a required field";
+  static const String gameCustStartGame = "Start Game";
+  static const String gameCustLow = 'Lowest Score Wins';
+  static const String gameCustHigh = 'Highest Score Wins';
+  static const String gameCustExample = 'e.g. Game Night with the Johnson\'s';
+  static const String gameCustReq = 'Game Title *';
 }

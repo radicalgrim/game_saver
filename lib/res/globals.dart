@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_saver/res/game_info.dart';
 import 'package:game_saver/res/player_info.dart';
+import 'package:game_saver/res/strings.dart';
 
 //Game Options Page
 bool gameOption1 = false;
@@ -13,6 +14,8 @@ bool gameOption4 = false;
 bool gameOption5 = false;
 bool gameOption6 = false;
 bool gameOption7 = false;
+
+enum HighLowOptions {high, low}
 
 //Game list for leaderboard
 List<GameInfo> gameList = [ GameInfo([PlayerInfo( 69, 'Josh')]) ];
@@ -37,4 +40,30 @@ class PlayerScoreWidget extends StatelessWidget {
       )
     );
   }
+}
+
+showAlertDialog(BuildContext context, String message) {
+
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text(ProjectStrings.ok),
+    onPressed: () => { Navigator.of(context).pop() },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: const Text(ProjectStrings.error),
+    content: Text(message),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

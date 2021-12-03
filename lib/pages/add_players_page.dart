@@ -124,7 +124,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                       }
                       else
                       {
-                        showAlertDialog(context, ProjectStrings.addPlayersMaxErrorMessage);
+                        globals.showAlertDialog(context, ProjectStrings.addPlayersMaxErrorMessage);
                       }
                     },
                   ),
@@ -149,7 +149,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                     }
                     else
                     {
-                      showAlertDialog(context, ProjectStrings.addPlayersErrorMessage);
+                      globals.showAlertDialog(context, ProjectStrings.addPlayersErrorMessage);
                     }
                   },
                 ),
@@ -173,36 +173,10 @@ class ItemWidget extends StatelessWidget {
       child: ListTile( // Useful standard widget for displaying something in ListView.
         leading: IconButton(
           icon: Icon(info.icon),
-          onPressed:() { showAlertDialog(context, "You and I both wish this removed the \nplayer from the list bud. I can't get it \nto update the state"); },
+          onPressed:() { globals.showAlertDialog(context, "You and I both wish this removed the \nplayer from the list bud. I can't get it \nto update the state"); },
           ),
         title: Text(info.displayname.toString()),
       )
     );
   }
-}
-
-showAlertDialog(BuildContext context, String message) {
-
-  // set up the button
-  Widget okButton = TextButton(
-    child: const Text(ProjectStrings.ok),
-    onPressed: () => { Navigator.of(context).pop() },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: const Text(ProjectStrings.error),
-    content: Text(message),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
 }

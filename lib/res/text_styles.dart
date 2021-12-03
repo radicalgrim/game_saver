@@ -15,4 +15,6 @@ class ProjectTextStyles {
       color: ProjectColors.darkTextColor);
   static const TextStyle buttonLargeTextStyle =
       TextStyle(fontSize: 20, color: ProjectColors.lightTextColor);
+  static final TextStyle appMiniTitleTextStyle = 
+      TextStyle(fontSize: 25, color: ProjectColors.darkTextColor);
 }
