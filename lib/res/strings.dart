@@ -42,4 +42,12 @@ class ProjectStrings {
   static const String gameCustHigh = 'Highest Score Wins';
   static const String gameCustExample = 'e.g. Game Night with the Johnson\'s';
   static const String gameCustReq = 'Game Title *';
+
+  // Round Pages
+  static const String roundHeader = "Game Rounds";
+  static const String roundNext = "Skip Player";
+  static const String roundPrevious = "Previous Player";
+  static const String roundEnd = "End Round";
+  static const String roundInput = "Score:";
+  static const String roundInputExample = "e.g. 12";
 }

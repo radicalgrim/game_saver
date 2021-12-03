@@ -1,4 +1,5 @@
 import 'package:game_saver/pages/add_players_page.dart';
+import 'package:game_saver/pages/round_x_page.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -129,7 +130,8 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                         }
                         else
                         {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPlayersPage()));
+                          globals.currentGame!.initPlayers();
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RoundXPage()));
                         }
                       },
                     ),

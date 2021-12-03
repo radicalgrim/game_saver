@@ -5,6 +5,6 @@ class PlayerInfo {
  PlayerInfo(this.points, this.displayname);
 
  int points;
- final IconData icon = Icons.remove_circle; //If we want to add user icons
+ final IconData icon = Icons.stars_outlined; //If we want to add user icons
  final String? displayname;
 }

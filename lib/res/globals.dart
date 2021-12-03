@@ -36,7 +36,7 @@ class PlayerScoreWidget extends StatelessWidget {
     return InkWell( // Enables taps for child and add ripple effect when child widget is long pressed.
       child: ListTile( // Useful standard widget for displaying something in ListView.
         leading: Icon(info.icon),
-        title: Text("$displayName  -  $score"),
+        title: Text("Player: $displayName                           Score: $score"),
       )
     );
   }

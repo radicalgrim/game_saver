@@ -173,7 +173,7 @@ class ItemWidget extends StatelessWidget {
       child: ListTile( // Useful standard widget for displaying something in ListView.
         leading: IconButton(
           icon: Icon(info.icon),
-          onPressed:() { globals.showAlertDialog(context, "You and I both wish this removed the \nplayer from the list bud. I can't get it \nto update the state"); },
+          onPressed:() { globals.showAlertDialog(context, "You and I both wish this removed the player from the list bud. I can't get it to update the state"); },
           ),
         title: Text(info.displayname.toString()),
       )
