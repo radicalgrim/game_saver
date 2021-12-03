@@ -30,7 +30,6 @@ class GameOptionsPageState extends State<GameOptionsPage> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        // TODO: What text do we want in the app bar, if any?
         title: const Text(ProjectStrings.gameOptionsHeader),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -39,7 +38,6 @@ class GameOptionsPageState extends State<GameOptionsPage> {
           },
         ),
       ),
-      // TODO: Make the page structure look a bit better
       body: SafeArea(
         child: Center(
           child: Column(
@@ -66,14 +64,16 @@ class GameOptionsPageState extends State<GameOptionsPage> {
                       setState(() {
                         gameOption2 = value;
                       });
-                    }),CheckboxListTile(
+                    }),
+                    CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption3),
                     value: gameOption3, 
                     onChanged: (bool? value) {
                       setState(() {
                         gameOption3 = value;
                       });
-                    }),CheckboxListTile(
+                    }),
+                    CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption4),
                     value: gameOption4, 
                     onChanged: (bool? value) {
