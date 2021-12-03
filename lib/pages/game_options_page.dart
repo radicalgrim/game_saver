@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_saver/res/colors.dart';
@@ -14,16 +14,6 @@ class GameOptionsPage extends StatefulWidget {
 }
 
 class GameOptionsPageState extends State<GameOptionsPage> {
-  //PARAMETERS
-  bool? enableGameTimer = false;
-  bool? gameOption2 = false;
-  bool? gameOption3 = false;
-  bool? gameOption4 = false;
-  bool? gameOption5 = false;
-  bool? gameOption6 = false;
-  bool? gameOption7 = false;
-
-
   //PAGE
   @override
   Widget build(BuildContext context) {
@@ -43,66 +33,66 @@ class GameOptionsPageState extends State<GameOptionsPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                 child: Text(ProjectStrings.gameOptionsTitle,
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
                 child: Column(children: [
                   CheckboxListTile(
-                    title: const Text(ProjectStrings.gameOptionGameTimer),
-                    value: enableGameTimer, 
+                    title: const Text(ProjectStrings.gameOption1),
+                    value: globals.gameOption1, 
                     onChanged: (bool? value) {
                       setState(() {
-                        enableGameTimer = value;
+                        globals.gameOption1 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption2),
-                    value: gameOption2, 
+                    value: globals.gameOption2, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption2 = value;
+                        globals.gameOption2 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption3),
-                    value: gameOption3, 
+                    value: globals.gameOption3, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption3 = value;
+                        globals.gameOption3 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption4),
-                    value: gameOption4, 
+                    value: globals.gameOption4, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption4 = value;
+                        globals.gameOption4 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption5),
-                    value: gameOption5, 
+                    value: globals.gameOption5, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption5 = value;
+                        globals.gameOption5 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption6),
-                    value: gameOption6, 
+                    value: globals.gameOption6, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption6 = value;
+                        globals.gameOption6 = value!;
                       });
                     }),
                     CheckboxListTile(
                     title: const Text(ProjectStrings.gameOption7),
-                    value: gameOption7, 
+                    value: globals.gameOption7, 
                     onChanged: (bool? value) {
                       setState(() {
-                        gameOption7 = value;
+                        globals.gameOption7 = value!;
                       });
                     }),
                 ],),

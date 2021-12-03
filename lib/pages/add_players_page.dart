@@ -1,6 +1,9 @@
 import 'dart:developer';
 import 'dart:html';
 
+import 'package:game_saver/pages/customize_game_page.dart';
+import 'package:game_saver/res/game_info.dart';
+import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_saver/res/colors.dart';
@@ -19,12 +22,22 @@ class AddPlayersPageState extends State<AddPlayersPage> {
   List<Widget> playerInfo = [];
   String inputValue = "";
   final fieldText = TextEditingController();
+  List<PlayerInfo> gamePlayers = [];
 
   void addPlayerInfo(String value)
   {
-    setState(() {
-      playerInfo.add(ItemWidget(PlayerInfo(0, value)));
-    });
+    if (value != "")
+    {
+      var info = PlayerInfo(0, value);
+
+      // Add to list on screen
+      setState(() {
+        playerInfo.add(ItemWidget(info));
+      });
+
+      // Add to list to create game
+      gamePlayers.add(info);
+    }
   }
 
   @override
@@ -53,7 +66,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
               ),
               
               Container(
-                // TODO: Add draggable player cards
+                // TODO: Make them draggable
                 width: 350,
                 height: 400,
                 color: ProjectColors.primarySwatch.shade100,
@@ -109,8 +122,21 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                   child: const Text(ProjectStrings.nextButton,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    // TODO: Implement me
-                    log("Next button pressed");
+                    if (gamePlayers.isNotEmpty)
+                    {
+                      //Create new game
+                      globals.currentGame = GameInfo(gamePlayers);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CustomizeGamePage()),
+                      );
+                    }
+                    else
+                    {
+                      showAlertDialog(context);
+                    }
                   },
                 ),
               ),
@@ -136,4 +162,30 @@ class ItemWidget extends StatelessWidget {
       )
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text(ProjectStrings.ok),
+    onPressed: () => { Navigator.of(context).pop() },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: const Text(ProjectStrings.error),
+    content: const Text(ProjectStrings.addPlayersErrorMessage),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
