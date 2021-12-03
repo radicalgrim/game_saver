@@ -7,7 +7,7 @@ import 'package:game_saver/res/text_styles.dart';
 
 class ScoreboardPage extends StatefulWidget {
   const ScoreboardPage({Key? key}) : super(key: key);
-  static const String route = "/gamecustomization";
+  static const String route = "/scoreboard";
   @override
   ScoreboardPageState createState() => ScoreboardPageState();
 }

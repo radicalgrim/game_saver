@@ -19,10 +19,20 @@ class AddPlayersPage extends StatefulWidget {
 }
 
 class AddPlayersPageState extends State<AddPlayersPage> {
-  List<Widget> playerInfo = [];
+
   String inputValue = "";
   final fieldText = TextEditingController();
   List<PlayerInfo> gamePlayers = [];
+  List<Widget> playerInfo = [];
+
+  void removePlayerInfo(PlayerInfo info)
+  {
+    setState(() {
+      playerInfo.remove(ItemWidget(info));
+    });
+
+    gamePlayers.remove(info);
+  }
 
   void addPlayerInfo(String value)
   {
@@ -64,7 +74,6 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                 child: Text(ProjectStrings.addPlayersHeading,
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
-              
               Container(
                 // TODO: Make them draggable
                 width: 350,
@@ -72,15 +81,13 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                 color: ProjectColors.primarySwatch.shade100,
                 child: Center(
                   child: Column(
-                    
                     children: [
                       ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
                         shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(), //Makes the list scrollable
                         itemCount: playerInfo.length, // Number of widget to be created.
                         itemBuilder: (context, itemIndex) => // Builder function for every item with index.
                             playerInfo[itemIndex],
-                      )
+                      ),
                     ],
                   )
                 )
@@ -164,7 +171,10 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell( // Enables taps for child and add ripple effect when child widget is long pressed.
       child: ListTile( // Useful standard widget for displaying something in ListView.
-        leading: Icon(info.icon),
+        leading: IconButton(
+          icon: Icon(info.icon),
+          onPressed:() { showAlertDialog(context, "You and I both wish this removed the \nplayer from the list bud. I can't get it \nto update the state"); },
+          ),
         title: Text(info.displayname.toString()),
       )
     );
