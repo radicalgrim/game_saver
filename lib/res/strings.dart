@@ -15,4 +15,10 @@ class ProjectStrings {
   static const String gameOptionsHeader = "Game Options";
   static const String gameOptionsTitle = "Options";
   static const String gameOptionGameTimer = "Enable Game Timer";
+  static const String gameOption2 = "Game Option 2";
+  static const String gameOption3 = "Game Option 3";
+  static const String gameOption4 = "Game Option 4";
+  static const String gameOption5 = "Game Option 5";
+  static const String gameOption6 = "Game Option 6";
+  static const String gameOption7 = "Game Option 7";
 }
