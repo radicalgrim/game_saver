@@ -72,10 +72,11 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                 color: ProjectColors.primarySwatch.shade100,
                 child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    
                     children: [
                       ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
                         shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(), //Makes the list scrollable
                         itemCount: playerInfo.length, // Number of widget to be created.
                         itemBuilder: (context, itemIndex) => // Builder function for every item with index.
                             playerInfo[itemIndex],
@@ -94,7 +95,6 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                     TextField(
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
-                        // icon: Icon(Icons.add_circle),
                         hintText: 'Display Name',
                         labelText: 'Display Name *',
                         contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -109,9 +109,16 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                     icon: const Icon(Icons.add_circle),
                     color: ProjectColors.primarySwatch.shade700,
                     onPressed: () {
-                      addPlayerInfo(inputValue);
-                      inputValue = "";
-                      fieldText.clear();
+                      if (playerInfo.length < 8)
+                      {
+                        addPlayerInfo(inputValue);
+                        inputValue = "";
+                        fieldText.clear();
+                      }
+                      else
+                      {
+                        showAlertDialog(context, ProjectStrings.addPlayersMaxErrorMessage);
+                      }
                     },
                   ),
                 ],
@@ -135,7 +142,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                     }
                     else
                     {
-                      showAlertDialog(context);
+                      showAlertDialog(context, ProjectStrings.addPlayersErrorMessage);
                     }
                   },
                 ),
@@ -164,7 +171,7 @@ class ItemWidget extends StatelessWidget {
   }
 }
 
-showAlertDialog(BuildContext context) {
+showAlertDialog(BuildContext context, String message) {
 
   // set up the button
   Widget okButton = TextButton(
@@ -175,7 +182,7 @@ showAlertDialog(BuildContext context) {
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     title: const Text(ProjectStrings.error),
-    content: const Text(ProjectStrings.addPlayersErrorMessage),
+    content: Text(message),
     actions: [
       okButton,
     ],

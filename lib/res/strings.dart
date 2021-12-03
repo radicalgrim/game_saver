@@ -11,10 +11,15 @@ class ProjectStrings {
   static const String newGameButton = "New Game";
   static const String scoreboardsButton = "Scoreboards";
 
+  // Scoreboard page
+  static const String scoreboardHeader = scoreboardsButton;
+  static const String scoreboardPreviousGames = "Top scores";
+
   // Add Players Page
   static const String addPlayersHeading = "Add Your Players";
   static const String addPlayerHint = "Add Player";
   static const String addPlayersErrorMessage = "Game must have at least 1 participant";
+  static const String addPlayersMaxErrorMessage = "Game cannot have more than 8 participants";
 
   // Game Options Page
   static const String gameOptionsHeader = "Game Options";

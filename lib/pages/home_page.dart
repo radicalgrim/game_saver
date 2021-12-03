@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_saver/pages/add_players_page.dart';
 import 'package:game_saver/pages/game_options_page.dart';
+import 'package:game_saver/pages/scoreboard.dart';
 import 'package:game_saver/res/colors.dart';
+import 'package:game_saver/res/globals.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 
@@ -36,11 +38,7 @@ class HomePageState extends State<HomePage> {
                   child: const Text(ProjectStrings.newGameButton,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddPlayersPage()),
-                    );
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPlayersPage()));
                   },
                 ),
               ),
@@ -50,8 +48,7 @@ class HomePageState extends State<HomePage> {
                   child: const Text(ProjectStrings.scoreboardsButton,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    // TODO: Implement me
-                    log("Scoreboards pressed");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ScoreboardPage()));
                   },
                 ),
               ),
