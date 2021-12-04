@@ -47,7 +47,7 @@ class RoundXPageState extends State<RoundXPage> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        title: const Text(ProjectStrings.roundHeader),
+        title: Text(globals.currentGame!.name as String),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {

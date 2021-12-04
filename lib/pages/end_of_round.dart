@@ -49,6 +49,7 @@ class EndOfRoundState extends State<EndOfRound> {
   {
     globals.currentGame!.setTime();
     globals.currentGame!.stopWatch();
+    globals.topScores.add(globals.currentGame!.getWinner());
     Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const EndOfGamePage()));
   }
 
@@ -58,7 +59,7 @@ class EndOfRoundState extends State<EndOfRound> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        title: const Text(ProjectStrings.eofRoundHeader),
+        title: Text(globals.currentGame!.name as String),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {

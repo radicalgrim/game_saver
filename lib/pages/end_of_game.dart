@@ -24,7 +24,6 @@ class EndOfGamePageState extends State<EndOfGamePage> {
   }
 
   scoreboards() {
-    globals.topScores.add(globals.currentGame!.getWinner());
     Navigator.push(context, PageTransition(child: const ScoreboardPage(), type: PageTransitionType.fade));
   }
 
@@ -40,7 +39,7 @@ class EndOfGamePageState extends State<EndOfGamePage> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        title: const Text(ProjectStrings.eofGameHeader),
+        title: Text((globals.currentGame!.name as String) + " Finished"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
