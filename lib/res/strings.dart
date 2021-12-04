@@ -50,4 +50,10 @@ class ProjectStrings {
   static const String roundEnd = "End Round";
   static const String roundInput = "Score:";
   static const String roundInputExample = "e.g. 12";
+
+  //End of Round
+  static const String eofRoundHeader = "Round Complete";
+  static const String eofRoundNext = "Next Round";
+  static const String eofRoundChange = "Change Scores";
+  static const String eofGameButton = "End Game";
 }

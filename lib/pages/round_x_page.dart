@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:game_saver/pages/end_of_round.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -148,9 +149,9 @@ class RoundXPageState extends State<RoundXPage> {
                 child: 
                   ElevatedButton(
                     child: const Text(ProjectStrings.roundEnd,
-                        style: ProjectTextStyles.buttonLargeTextStyle),
+                      style: ProjectTextStyles.buttonLargeTextStyle),
                     onPressed: () {
-                      // TODO -> go to end of round page
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const EndOfRound()));  
                     },
                   ),
               )
