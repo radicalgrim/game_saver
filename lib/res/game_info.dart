@@ -58,7 +58,6 @@ class GameInfo {
       honorableMention = PlayerInfo(1000000, "error");
       // ignore: avoid_function_literals_in_foreach_calls
       players.forEach((x) => honorableMention = ((!displayedPlayers.contains(x) && x.points < honorableMention.points) ? x : honorableMention));
-
     }
     displayedPlayers.add(honorableMention);
     return PlayerScoreWidget(honorableMention);

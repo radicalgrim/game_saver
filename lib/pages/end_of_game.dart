@@ -33,6 +33,33 @@ class EndOfGamePageState extends State<EndOfGamePage> {
 
   var timerHeight = (50 - (globals.currentGame!.showTimer ? 0 : 50)) as double;
 
+  Widget getHonorableMentionsWidget()
+  {
+    if (globals.currentGame!.totalPlayers() != 1)
+    {
+      return Container(
+              child: 
+                Center(child: 
+                  Column(children: [
+                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
+                          shrinkWrap: true,
+                          itemCount: globals.currentGame!.totalPlayers() - 1, // Number of widget to be created.
+                          itemBuilder: (context, itemIndex) => // Builder function for every item with index.
+                              globals.currentGame!.getPlayersByRank(),
+                        )
+                  ],),
+                ),
+              width: 350,
+              height: (50 * (globals.currentGame!.totalPlayers() - 1)) as double,
+              color: ProjectColors.primarySwatch.shade100,
+            );
+    }
+    else
+    {
+      return const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
+    }
+  }
+
   //PAGE
   @override
   Widget build(BuildContext context) {
@@ -76,22 +103,7 @@ class EndOfGamePageState extends State<EndOfGamePage> {
                 padding: EdgeInsets.symmetric(vertical: timerHeight, horizontal: 20),
                 child: Text(roundTitle(), style: ProjectTextStyles.pageTitleTextStyle),
               ),
-              Container(
-                child: 
-                Center(child: 
-                  Column(children: [
-                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
-                          shrinkWrap: true,
-                          itemCount: globals.currentGame!.totalPlayers() - 1, // Number of widget to be created.
-                          itemBuilder: (context, itemIndex) => // Builder function for every item with index.
-                              globals.currentGame!.getPlayersByRank(),
-                        )
-                  ],),
-                ),
-                width: 350,
-                height: (50 * (globals.currentGame!.totalPlayers() - 1)) as double,
-                color: ProjectColors.primarySwatch.shade100,
-              ),
+              getHonorableMentionsWidget(),
               Column(
                 children: [
                   Row(
