@@ -18,16 +18,19 @@ class CustomizeGamePage extends StatefulWidget {
 class CustomizeGamePageState extends State<CustomizeGamePage> {
   final fieldText = TextEditingController();
   bool showTimer = globals.currentGame!.showTimer;
+  String showTimerString = (globals.currentGame!.showTimer ? "On" : "Off");
   final _formKey = GlobalKey<FormBuilderState>();
 
   void toggleSwitch(bool value) {
     if (globals.currentGame!.showTimer == false) {
       setState(() {
         showTimer = globals.currentGame!.showTimer = true;
+        showTimerString = "On";
       });
     } else {
       setState(() {
         showTimer = globals.currentGame!.showTimer = false;
+        showTimerString = "Off";
       });
     }
   }
@@ -117,7 +120,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: Text('Show Timer  -  $showTimer',
+                      child: Text('Timer  -  $showTimerString',
                           style: ProjectTextStyles.appMiniTitleTextStyle),
                     ),
                     Switch(
