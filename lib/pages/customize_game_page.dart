@@ -40,6 +40,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(ProjectStrings.gameCustomizationHeader),
         leading: IconButton(

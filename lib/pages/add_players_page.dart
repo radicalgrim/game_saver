@@ -25,6 +25,19 @@ class AddPlayersPageState extends State<AddPlayersPage> {
   List<Widget> playerInfo = [];
   final _formKey = GlobalKey<FormBuilderState>();
 
+  void submitPlayer() {
+    FocusScope.of(context).unfocus();
+    final playerFieldData = _formKey.currentState!.fields["player"]?.value;
+    if (playerFieldData == null) return;
+    if (playerInfo.length < 8) {
+      addPlayerInfo(playerFieldData);
+    } else {
+      globals.showAlertDialog(
+          context, ProjectStrings.addPlayersMaxErrorMessage);
+    }
+    _formKey.currentState?.reset();
+  }
+
   void removePlayerInfo(PlayerInfo info) {
     setState(() {
       playerInfo.remove(ItemWidget(info));
@@ -105,6 +118,9 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: FormBuilderTextField(
+                            onEditingComplete: () {
+                              submitPlayer();
+                            },
                             name: "player",
                             decoration: const InputDecoration(
                               constraints: BoxConstraints(
@@ -128,17 +144,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         iconSize: 40,
                         color: ProjectColors.primarySwatch.shade700,
                         onPressed: () {
-                          FocusScope.of(context).unfocus();
-                          _formKey.currentState?.save();
-                          final playerFieldData =
-                              _formKey.currentState!.fields["player"]?.value;
-                          if (playerInfo.length < 8) {
-                            addPlayerInfo(playerFieldData);
-                          } else {
-                            globals.showAlertDialog(context,
-                                ProjectStrings.addPlayersMaxErrorMessage);
-                          }
-                          _formKey.currentState?.reset();
+                          submitPlayer();
                         },
                       ),
                     ],
