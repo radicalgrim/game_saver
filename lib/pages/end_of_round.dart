@@ -22,6 +22,8 @@ class EndOfRoundState extends State<EndOfRound> {
 
   final int roundNum = globals.currentGame!.round + 1;
 
+  String roundTime = globals.currentGame!.elapsedTime;
+
   void changeScoresButton()
   {
     globals.currentGame!.currentPlayer = 0;
@@ -55,7 +57,7 @@ class EndOfRoundState extends State<EndOfRound> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                child: Text("Round $roundNum",
+                child: Text("Round $roundNum\nCurrent Elapsed Time: $roundTime",
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
@@ -107,6 +109,9 @@ class EndOfRoundState extends State<EndOfRound> {
                     child: const Text(ProjectStrings.eofGameButton,
                         style: ProjectTextStyles.buttonLargeTextStyle),
                     onPressed: () {
+                      globals.currentGame!.setTime();
+                      globals.currentGame!.stopWatch();
+
                       // TODO -> go to end of game page
                     },
                   ),
