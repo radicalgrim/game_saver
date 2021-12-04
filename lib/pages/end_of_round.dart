@@ -24,10 +24,17 @@ class EndOfRoundState extends State<EndOfRound> {
 
   String roundTime = globals.currentGame!.elapsedTime;
 
+  int height = 50 * globals.currentGame!.totalPlayers();
+
   void changeScoresButton()
   {
     globals.currentGame!.currentPlayer = 0;
     Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const RoundXPage()));
+  }
+
+  String roundTitle()
+  {
+    return "Round $roundNum" + (globals.currentGame!.showTimer ? "\nRound Time: $roundTime" : "");
   }
 
   void nextRound()
@@ -57,7 +64,7 @@ class EndOfRoundState extends State<EndOfRound> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                child: Text("Round $roundNum\nCurrent Elapsed Time: $roundTime",
+                child: Text(roundTitle(),
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
@@ -73,14 +80,14 @@ class EndOfRoundState extends State<EndOfRound> {
                   ],),
                 ),
                 width: 350,
-                height: 400,
+                height: height as double,
                 color: ProjectColors.primarySwatch.shade100,
               ),
               Column(
                 children: [
                   Row(
                     children: [
-                      Padding(padding: const EdgeInsets.fromLTRB(25, 200, 0, 0),
+                      Padding(padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
                         child:  
                           ElevatedButton(
                             child: const Text(ProjectStrings.eofRoundChange,
@@ -90,7 +97,7 @@ class EndOfRoundState extends State<EndOfRound> {
                             },
                           ),
                       ),
-                      Padding(padding: const EdgeInsets.fromLTRB(20, 200, 0, 0),
+                      Padding(padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
                         child:  
                           ElevatedButton(
                             child: const Text(ProjectStrings.eofRoundNext,
