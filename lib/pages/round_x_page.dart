@@ -151,6 +151,7 @@ class RoundXPageState extends State<RoundXPage> {
                     child: const Text(ProjectStrings.roundEnd,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                     onPressed: () {
+                      globals.currentGame!.setTime();
                       Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const EndOfRound()));  
                     },
                   ),

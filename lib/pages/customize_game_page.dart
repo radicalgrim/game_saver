@@ -131,6 +131,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                         else
                         {
                           globals.currentGame!.initPlayers();
+                          globals.currentGame!.startWatch();
                           Navigator.push(context, MaterialPageRoute(builder: (context) => const RoundXPage()));
                         }
                       },
