@@ -9,6 +9,7 @@ class GameInfo {
   GameInfo(this.players);
 
   List<PlayerInfo> players = [];
+  List<PlayerInfo> displayedPlayers = [];
   PlayerInfo? winner;
   String? name;
 
@@ -23,6 +24,45 @@ class GameInfo {
   List<Widget> playersView = [];
   // ignore: avoid_function_literals_in_foreach_calls
   void initPlayers() => { players.forEach((element) { playersView.add(PlayerScoreWidget(element)); }) };
+
+  Widget getWinner()
+  {
+    if (highlowOption == HighLowOptions.high)
+    {
+      winner = PlayerInfo(-1, "error");
+      // ignore: avoid_function_literals_in_foreach_calls
+      players.forEach((x) => winner = (x.points > winner!.points ? x : winner));
+    }
+    else
+    {
+      winner = PlayerInfo(1000000, "error");
+      // ignore: avoid_function_literals_in_foreach_calls
+      players.forEach((x) => winner = (x.points < winner!.points ? x : winner));
+    }
+
+    displayedPlayers.add(winner as PlayerInfo);
+    return PlayerScoreWidget(winner as PlayerInfo);
+  }
+
+  Widget getPlayersByRank()
+  {
+    PlayerInfo honorableMention;
+    if (highlowOption == HighLowOptions.high)
+    {
+      honorableMention = PlayerInfo(-1, "error");
+      // ignore: avoid_function_literals_in_foreach_calls
+      players.forEach((x) => honorableMention = ((!displayedPlayers.contains(x) && x.points > honorableMention.points) ? x : honorableMention));
+    }
+    else
+    {
+      honorableMention = PlayerInfo(1000000, "error");
+      // ignore: avoid_function_literals_in_foreach_calls
+      players.forEach((x) => honorableMention = ((!displayedPlayers.contains(x) && x.points < honorableMention.points) ? x : honorableMention));
+
+    }
+    displayedPlayers.add(honorableMention);
+    return PlayerScoreWidget(honorableMention);
+  }
 
   Stopwatch watch = Stopwatch();
   Timer? timer;

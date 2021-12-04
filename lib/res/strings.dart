@@ -13,7 +13,7 @@ class ProjectStrings {
 
   // Scoreboard page
   static const String scoreboardHeader = scoreboardsButton;
-  static const String scoreboardPreviousGames = "Top scores";
+  static const String scoreboardPreviousGames = "Game Winners";
 
   // Add Players Page
   static const String addPlayersHeading = "Add Your Players";
@@ -26,7 +26,7 @@ class ProjectStrings {
   // Game Options Page
   static const String gameOptionsHeader = "Game Options";
   static const String gameOptionsTitle = "Options";
-  static const String gameOption1 = "Enable Game Timer";
+  static const String gameOption1 = "Game Option 1";
   static const String gameOption2 = "Game Option 2";
   static const String gameOption3 = "Game Option 3";
   static const String gameOption4 = "Game Option 4";
@@ -58,4 +58,10 @@ class ProjectStrings {
   static const String eofRoundNext = "Next Round";
   static const String eofRoundChange = "Change Scores";
   static const String eofGameButton = "End Game";
+
+  //End of Game
+  static const String eofGameHeader = "Game Complete";
+  static const String eofGameTitle = "And the winner is...";
+  static const String eofGameNewGame = newGameButton;
+  static const String eofGameScoreboards = scoreboardsButton;
 }
