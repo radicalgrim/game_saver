@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:game_saver/pages/end_of_game.dart';
 import 'package:game_saver/pages/round_x_page.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
@@ -42,6 +43,13 @@ class EndOfRoundState extends State<EndOfRound> {
     globals.currentGame!.round++;
     globals.currentGame!.currentPlayer = 0;
     Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const RoundXPage()));
+  }
+
+  void endGame()
+  {
+    globals.currentGame!.setTime();
+    globals.currentGame!.stopWatch();
+    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const EndOfGamePage()));
   }
 
   //PAGE
@@ -118,8 +126,7 @@ class EndOfRoundState extends State<EndOfRound> {
                     onPressed: () {
                       globals.currentGame!.setTime();
                       globals.currentGame!.stopWatch();
-
-                      // TODO -> go to end of game page
+                      endGame();
                     },
                   ),
               )
