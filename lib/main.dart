@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:game_saver/pages/add_players_page.dart';
-import 'package:game_saver/pages/flutter_demo_page.dart';
+import 'package:game_saver/pages/customize_game_page.dart';
+import 'package:game_saver/pages/game_options_page.dart';
 import 'package:game_saver/pages/home_page.dart';
+import 'package:game_saver/pages/round_x_page.dart';
+import 'package:game_saver/pages/scoreboard.dart';
 import 'package:game_saver/res/colors.dart';
 
 void main() {
@@ -20,9 +23,11 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomePage(),
       routes: {
-        HomePage.route: (_) => const HomePage(),
         AddPlayersPage.route: (_) => const AddPlayersPage(),
-        FlutterDemoPage.route: (_) => const FlutterDemoPage(),
+        CustomizeGamePage.route: (_) => const CustomizeGamePage(),
+        GameOptionsPage.route: (_) => const GameOptionsPage(),
+        RoundXPage.route: (_) => const RoundXPage(),
+        ScoreboardPage.route: (_) => const ScoreboardPage(),
       },
     );
   }
