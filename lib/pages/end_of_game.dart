@@ -20,7 +20,7 @@ class EndOfGamePageState extends State<EndOfGamePage> {
   String roundTitle()
   {
     var roundTime = globals.currentGame!.elapsedTime;
-    return (globals.currentGame!.showTimer ? "Total Game Time: $roundTime" : "") + "\nHonorable Mentions";
+    return (globals.currentGame!.showTimer ? "Total Game Time: $roundTime" : "") + "\n\nHonorable Mentions";
   }
 
   scoreboards() {
