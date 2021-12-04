@@ -10,7 +10,6 @@ import 'package:game_saver/res/player_info.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:reorderables/reorderables.dart';
 
 class AddPlayersPage extends StatefulWidget {
   const AddPlayersPage({Key? key}) : super(key: key);
@@ -76,9 +75,15 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                 ),
                 Container(
                     // TODO: Make them draggable
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: ProjectColors.primarySwatch,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8))),
                     width: 350,
                     height: 400,
-                    color: ProjectColors.primarySwatch.shade100,
+                    //color: ProjectColors.primarySwatch.shade100,
                     child: Center(
                         child: Column(
                       children: [
@@ -129,20 +134,12 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                           _formKey.currentState?.save();
                           final playerFieldData =
                               _formKey.currentState!.fields["player"]?.value;
-
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("$playerFieldData"),
-                            duration: const Duration(seconds: 2),
-                          ));
-
-                          // if (playerInfo.length < 8) {
-                          //   addPlayerInfo(inputValue);
-                          //   inputValue = "";
-                          //   fieldText.clear();
-                          // } else {
-                          //   globals.showAlertDialog(
-                          //       context, ProjectStrings.addPlayersMaxErrorMessage);
-                          // }
+                          if (playerInfo.length < 8) {
+                            addPlayerInfo(playerFieldData);
+                          } else {
+                            globals.showAlertDialog(context,
+                                ProjectStrings.addPlayersMaxErrorMessage);
+                          }
                           _formKey.currentState?.reset();
                         },
                       ),
