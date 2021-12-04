@@ -18,8 +18,10 @@ class ProjectStrings {
   // Add Players Page
   static const String addPlayersHeading = "Add Your Players";
   static const String addPlayerHint = "Add Player";
-  static const String addPlayersErrorMessage = "Game must have at least 1 participant";
-  static const String addPlayersMaxErrorMessage = "Game cannot have more than 8 participants";
+  static const String addPlayersErrorMessage =
+      "Game must have at least 1 participant";
+  static const String addPlayersMaxErrorMessage =
+      "Game cannot have more than 8 participants";
 
   // Game Options Page
   static const String gameOptionsHeader = "Game Options";
@@ -40,7 +42,7 @@ class ProjectStrings {
   static const String gameCustStartGame = "Start Game";
   static const String gameCustLow = 'Lowest Score Wins';
   static const String gameCustHigh = 'Highest Score Wins';
-  static const String gameCustExample = 'e.g. Game Night with the Johnson\'s';
+  static const String gameCustHint = 'e.g. Game Night with the Johnson\'s';
   static const String gameCustReq = 'Game Title *';
 
   // Round Pages

@@ -51,9 +51,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
-      //resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        // TODO: What text do we want in the app bar, if any?
         title: const Text(ProjectStrings.appTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -62,7 +60,6 @@ class AddPlayersPageState extends State<AddPlayersPage> {
           },
         ),
       ),
-      // TODO: Make the page structure look a bit better
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -83,7 +80,6 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                             const BorderRadius.all(Radius.circular(8))),
                     width: 350,
                     height: 400,
-                    //color: ProjectColors.primarySwatch.shade100,
                     child: Center(
                         child: Column(
                       children: [
@@ -99,7 +95,8 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                       ],
                     ))),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 20, right: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -111,7 +108,7 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                             name: "player",
                             decoration: const InputDecoration(
                               constraints: BoxConstraints(
-                                maxWidth: 300,
+                                maxWidth: 275,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -128,9 +125,10 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                       ),
                       IconButton(
                         icon: const Icon(Icons.add_circle),
-                        iconSize: 36,
+                        iconSize: 40,
                         color: ProjectColors.primarySwatch.shade700,
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           _formKey.currentState?.save();
                           final playerFieldData =
                               _formKey.currentState!.fields["player"]?.value;
