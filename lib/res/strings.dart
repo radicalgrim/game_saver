@@ -4,7 +4,7 @@ class ProjectStrings {
   //Global
   static const String error = 'Error';
   static const String ok = 'OK';
-  static const String nextButton = "Next";
+  static const String nextButton = "Continue";
 
   // Home Page
   static const String appTitle = "GameSaver";
