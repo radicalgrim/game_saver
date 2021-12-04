@@ -25,7 +25,7 @@ class GameInfo {
   void initPlayers() => { players.forEach((element) { playersView.add(PlayerScoreWidget(element)); }) };
 
   Stopwatch watch = Stopwatch();
-  Timer timer;
+  Timer? timer;
   bool startStop = true;
 
   String elapsedTime = '';
