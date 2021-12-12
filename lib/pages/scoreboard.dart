@@ -19,7 +19,8 @@ class ScoreboardPageState extends State<ScoreboardPage> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        title: const Text(ProjectStrings.scoreboardHeader),
+        title: const Text(ProjectStrings.appTitle),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -27,26 +28,40 @@ class ScoreboardPageState extends State<ScoreboardPage> {
           },
         ),
       ),
+      // appBar: AppBar(
+      //   title: const Text(ProjectStrings.scoreboardHeader),
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                 child: Text(ProjectStrings.scoreboardPreviousGames,
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
-                child: 
-                Center(child: 
-                  Column(children: [
-                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
-                          shrinkWrap: true,
-                          itemCount: globals.topScores.length, // Number of widget to be created.
-                          itemBuilder: (context, itemIndex) => // Builder function for every item with index.
-                              globals.topScores[itemIndex],
-                        )
-                  ],),
+                child: Center(
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        // Widget which creates [ItemWidget] in scrollable list.
+                        shrinkWrap: true,
+                        itemCount: globals.topScores
+                            .length, // Number of widget to be created.
+                        itemBuilder: (context,
+                                itemIndex) => // Builder function for every item with index.
+                            globals.topScores[itemIndex],
+                      )
+                    ],
+                  ),
                 ),
                 width: 350,
                 height: 400,

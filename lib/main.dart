@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // TODO: Force in to portrait mode
       title: 'game_saver',
       theme: ThemeData(
         primarySwatch: ProjectColors.primarySwatch,

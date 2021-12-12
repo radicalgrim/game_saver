@@ -10,7 +10,6 @@ import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 import 'package:page_transition/page_transition.dart';
 
-
 class EndOfRound extends StatefulWidget {
   const EndOfRound({Key? key}) : super(key: key);
   static const String route = "/endofround";
@@ -27,30 +26,36 @@ class EndOfRoundState extends State<EndOfRound> {
 
   int height = 50 * globals.currentGame!.totalPlayers();
 
-  void changeScoresButton()
-  {
+  void changeScoresButton() {
     globals.currentGame!.currentPlayer = 0;
-    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const RoundXPage()));
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const RoundXPage()));
   }
 
-  String roundTitle()
-  {
-    return "Round $roundNum" + (globals.currentGame!.showTimer ? "\nRound Time: $roundTime" : "");
+  String roundTitle() {
+    return "Round $roundNum" +
+        (globals.currentGame!.showTimer ? "\nRound Time: $roundTime" : "");
   }
 
-  void nextRound()
-  {
+  void nextRound() {
     globals.currentGame!.round++;
     globals.currentGame!.currentPlayer = 0;
-    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const RoundXPage()));
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const RoundXPage()));
   }
 
-  void endGame()
-  {
+  void endGame() {
     globals.currentGame!.setTime();
     globals.currentGame!.stopWatch();
     globals.topScores.add(globals.currentGame!.getWinner());
-    Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const EndOfGamePage()));
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const EndOfGamePage()));
   }
 
   //PAGE
@@ -59,7 +64,8 @@ class EndOfRoundState extends State<EndOfRound> {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
-        title: Text(globals.currentGame!.name as String),
+        title: const Text(ProjectStrings.appTitle),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -67,26 +73,40 @@ class EndOfRoundState extends State<EndOfRound> {
           },
         ),
       ),
+      // appBar: AppBar(
+      //   title: Text(globals.currentGame!.name as String),
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                 child: Text(roundTitle(),
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
-                child: 
-                Center(child: 
-                  Column(children: [
-                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
+                child: Center(
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        // Widget which creates [ItemWidget] in scrollable list.
                         shrinkWrap: true,
-                        itemCount: globals.currentGame!.totalPlayers(), // Number of widgets to be created.
-                        itemBuilder: (context, itemIndex) => // Builder function for every item with index.
+                        itemCount: globals.currentGame!
+                            .totalPlayers(), // Number of widgets to be created.
+                        itemBuilder: (context,
+                                itemIndex) => // Builder function for every item with index.
                             globals.currentGame!.playersView[itemIndex],
                       )
-                  ],),
+                    ],
+                  ),
                 ),
                 width: 350,
                 height: height as double,
@@ -96,40 +116,41 @@ class EndOfRoundState extends State<EndOfRound> {
                 children: [
                   Row(
                     children: [
-                      Padding(padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
-                        child:  
-                          ElevatedButton(
-                            child: const Text(ProjectStrings.eofRoundChange,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              changeScoresButton();
-                            },
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
+                        child: ElevatedButton(
+                          child: const Text(ProjectStrings.eofRoundChange,
+                              style: ProjectTextStyles.buttonLargeTextStyle),
+                          onPressed: () {
+                            changeScoresButton();
+                          },
+                        ),
                       ),
-                      Padding(padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
-                        child:  
-                          ElevatedButton(
-                            child: const Text(ProjectStrings.eofRoundNext,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              nextRound();
-                            },
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                        child: ElevatedButton(
+                          child: const Text(ProjectStrings.eofRoundNext,
+                              style: ProjectTextStyles.buttonLargeTextStyle),
+                          onPressed: () {
+                            nextRound();
+                          },
+                        ),
                       )
-                  ],)
+                    ],
+                  )
                 ],
               ),
-              Padding(padding: const EdgeInsets.fromLTRB(20, 150, 0, 0),
-                child: 
-                  ElevatedButton(
-                    child: const Text(ProjectStrings.eofGameButton,
-                        style: ProjectTextStyles.buttonLargeTextStyle),
-                    onPressed: () {
-                      globals.currentGame!.setTime();
-                      globals.currentGame!.stopWatch();
-                      endGame();
-                    },
-                  ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 150, 0, 0),
+                child: ElevatedButton(
+                  child: const Text(ProjectStrings.eofGameButton,
+                      style: ProjectTextStyles.buttonLargeTextStyle),
+                  onPressed: () {
+                    globals.currentGame!.setTime();
+                    globals.currentGame!.stopWatch();
+                    endGame();
+                  },
+                ),
               )
             ],
           ),

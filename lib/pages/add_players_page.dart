@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:game_saver/pages/customize_game_page.dart';
 import 'package:game_saver/res/game_info.dart';
 import 'package:game_saver/res/globals.dart' as globals;
@@ -25,47 +23,13 @@ class AddPlayersPageState extends State<AddPlayersPage> {
   List<Widget> playerInfo = [];
   final _formKey = GlobalKey<FormBuilderState>();
 
-  void submitPlayer() {
-    FocusScope.of(context).unfocus();
-    final playerFieldData = _formKey.currentState!.fields["player"]?.value;
-    if (playerFieldData == null) return;
-    if (playerInfo.length < 8) {
-      addPlayerInfo(playerFieldData);
-    } else {
-      globals.showAlertDialog(
-          context, ProjectStrings.addPlayersMaxErrorMessage);
-    }
-    _formKey.currentState?.reset();
-  }
-
-  void removePlayerInfo(PlayerInfo info) {
-    setState(() {
-      playerInfo.remove(ItemWidget(info));
-    });
-
-    gamePlayers.remove(info);
-  }
-
-  void addPlayerInfo(String value) {
-    if (value != "") {
-      var info = PlayerInfo(0, value);
-
-      // Add to list on screen
-      setState(() {
-        playerInfo.add(ItemWidget(info));
-      });
-
-      // Add to list to create game
-      gamePlayers.add(info);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
       appBar: AppBar(
         title: const Text(ProjectStrings.appTitle),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -97,12 +61,9 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         child: Column(
                       children: [
                         ListView.builder(
-                          // Widget which creates [ItemWidget] in scrollable list.
                           shrinkWrap: true,
-                          itemCount: playerInfo
-                              .length, // Number of widget to be created.
-                          itemBuilder: (context,
-                                  itemIndex) => // Builder function for every item with index.
+                          itemCount: playerInfo.length,
+                          itemBuilder: (context, itemIndex) =>
                               playerInfo[itemIndex],
                         ),
                       ],
@@ -118,10 +79,12 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: FormBuilderTextField(
+                            // TODO: Make text input automatically uppercase
                             onEditingComplete: () {
                               submitPlayer();
                             },
                             name: "player",
+                            textCapitalization: TextCapitalization.words,
                             decoration: const InputDecoration(
                               constraints: BoxConstraints(
                                 maxWidth: 275,
@@ -157,9 +120,8 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         style: ProjectTextStyles.buttonLargeTextStyle),
                     onPressed: () {
                       if (gamePlayers.isNotEmpty) {
-                        //Create new game
+                        // Create new game
                         globals.currentGame = GameInfo(gamePlayers);
-
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -179,6 +141,41 @@ class AddPlayersPageState extends State<AddPlayersPage> {
       ),
     );
   }
+
+  void submitPlayer() {
+    FocusScope.of(context).unfocus();
+    final playerFieldData = _formKey.currentState!.fields["player"]?.value;
+    if (playerFieldData == null) return;
+    if (playerInfo.length < 8) {
+      addPlayerInfo(playerFieldData);
+    } else {
+      globals.showAlertDialog(
+          context, ProjectStrings.addPlayersMaxErrorMessage);
+    }
+    _formKey.currentState?.reset();
+  }
+
+  void removePlayerInfo(PlayerInfo info) {
+    setState(() {
+      playerInfo.remove(ItemWidget(info));
+    });
+
+    gamePlayers.remove(info);
+  }
+
+  void addPlayerInfo(String value) {
+    if (value != "") {
+      var info = PlayerInfo(0, value);
+
+      // Add to list on screen
+      setState(() {
+        playerInfo.add(ItemWidget(info));
+      });
+
+      // Add to list to create game
+      gamePlayers.add(info);
+    }
+  }
 }
 
 class ItemWidget extends StatelessWidget {
@@ -189,9 +186,7 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        // Enables taps for child and add ripple effect when child widget is long pressed.
         child: ListTile(
-      // Useful standard widget for displaying something in ListView.
       leading: IconButton(
         icon: Icon(info.icon),
         onPressed: () {
