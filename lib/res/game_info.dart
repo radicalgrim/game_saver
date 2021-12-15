@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:game_saver/res/globals.dart';
 import 'package:game_saver/res/player_info.dart';
 
@@ -18,8 +19,8 @@ class GameInfo {
   int currentPlayer = 0;
   int totalPlayers() => players.length;
 
-  bool showTimer = false;
-  HighLowOptions? highlowOption = HighLowOptions.high;
+  bool showTimer = gameOptionDefaultTimerON;
+  HighLowOptions highlowOption = gameOptionDefaultScoreLOW ? HighLowOptions.low : HighLowOptions.high;
 
   List<Widget> playersView = [];
   // ignore: avoid_function_literals_in_foreach_calls

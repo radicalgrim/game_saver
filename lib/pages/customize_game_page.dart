@@ -113,7 +113,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                             groupValue: globals.currentGame!.highlowOption,
                             onChanged: (globals.HighLowOptions? value) {
                               setState(() {
-                                globals.currentGame!.highlowOption = value;
+                                globals.currentGame!.highlowOption = value!;
                               });
                             },
                           ),
@@ -125,7 +125,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                             groupValue: globals.currentGame!.highlowOption,
                             onChanged: (globals.HighLowOptions? value) {
                               setState(() {
-                                globals.currentGame!.highlowOption = value;
+                                globals.currentGame!.highlowOption = value!;
                               });
                             },
                           ),
@@ -137,7 +137,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 25),
-                          child: Text("Timer",
+                          child: Text("Timer - $showTimerString",
                               style: ProjectTextStyles.appMiniTitleTextStyle),
                         ),
                         Switch(
@@ -162,7 +162,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                   child: const Text(ProjectStrings.gameCustStartGame,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    if (globals.currentGame!.name == null) {
+                    if (globals.currentGame!.name == null || globals.currentGame!.name == "") {
                       globals.showAlertDialog(
                           context, ProjectStrings.gameCustReqError);
                     } else {

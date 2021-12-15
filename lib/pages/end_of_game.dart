@@ -24,10 +24,12 @@ class EndOfGamePageState extends State<EndOfGamePage> {
   }
 
   scoreboards() {
+    Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.push(context, PageTransition(child: const ScoreboardPage(), type: PageTransitionType.fade));
   }
 
   newGame() {
+    Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.push(context, PageTransition(child: const AddPlayersPage(), type: PageTransitionType.fade));
   }
 

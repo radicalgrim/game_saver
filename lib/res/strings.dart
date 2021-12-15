@@ -26,9 +26,9 @@ class ProjectStrings {
   // Game Options Page
   static const String gameOptionsHeader = "Game Options";
   static const String gameOptionsTitle = "Options";
-  static const String gameOption1 = "Game Option 1";
-  static const String gameOption2 = "Game Option 2";
-  static const String gameOption3 = "Game Option 3";
+  static const String gameOptionDefaultTimerON = "Default Game Timer ON";
+  static const String gameOptionDefaultScoreLOW = "Default Game Score LOW";
+  static const String gameOptionEndRoundOnPlayer = "End Round After Final Player's Turn";
   static const String gameOption4 = "Game Option 4";
   static const String gameOption5 = "Game Option 5";
   static const String gameOption6 = "Game Option 6";

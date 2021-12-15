@@ -40,27 +40,27 @@ class GameOptionsPageState extends State<GameOptionsPage> {
               Container(
                 child: Column(children: [
                   CheckboxListTile(
-                    title: const Text(ProjectStrings.gameOption1),
-                    value: globals.gameOption1, 
+                    title: const Text(ProjectStrings.gameOptionDefaultTimerON),
+                    value: globals.gameOptionDefaultTimerON, 
                     onChanged: (bool? value) {
                       setState(() {
-                        globals.gameOption1 = value!;
+                        globals.gameOptionDefaultTimerON = value!;
                       });
                     }),
                     CheckboxListTile(
-                    title: const Text(ProjectStrings.gameOption2),
-                    value: globals.gameOption2, 
+                    title: const Text(ProjectStrings.gameOptionDefaultScoreLOW),
+                    value: globals.gameOptionDefaultScoreLOW, 
                     onChanged: (bool? value) {
                       setState(() {
-                        globals.gameOption2 = value!;
+                        globals.gameOptionDefaultScoreLOW = value!;
                       });
                     }),
                     CheckboxListTile(
-                    title: const Text(ProjectStrings.gameOption3),
-                    value: globals.gameOption3, 
+                    title: const Text(ProjectStrings.gameOptionEndRoundOnPlayer),
+                    value: globals.gameOptionEndRoundOnPlayer, 
                     onChanged: (bool? value) {
                       setState(() {
-                        globals.gameOption3 = value!;
+                        globals.gameOptionEndRoundOnPlayer = value!;
                       });
                     }),
                     CheckboxListTile(

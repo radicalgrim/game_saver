@@ -37,13 +37,25 @@ class RoundXPageState extends State<RoundXPage> {
   }
 
   void nextPlayer() {
-    globals.currentGame!.currentPlayer =
-        (globals.currentGame!.currentPlayer + 1) %
-            globals.currentGame!.totalPlayers();
-    Navigator.push(
+    globals.currentGame!.currentPlayer = globals.currentGame!.currentPlayer + 1;
+
+    if (globals.gameOptionEndRoundOnPlayer 
+          && globals.currentGame!.currentPlayer == globals.currentGame!.totalPlayers())
+    {
+      globals.currentGame!.setTime();
+      Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.fade, child: const EndOfRound()));
+    }
+    else
+    {
+      globals.currentGame!.currentPlayer %= globals.currentGame!.totalPlayers();
+      Navigator.push(
         context,
         PageTransition(
             type: PageTransitionType.fade, child: const RoundXPage()));
+    }
   }
 
   //PAGE

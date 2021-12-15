@@ -122,6 +122,11 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                       if (gamePlayers.isNotEmpty) {
                         // Create new game
                         globals.currentGame = GameInfo(gamePlayers);
+
+                        //Set defaults from options page for next game
+                        // globals.currentGame!.showTimer = globals.gameOptionDefaultTimerON;
+                        // globals.currentGame!.highlowOption = globals.gameOptionDefaultScoreLOW;
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
