@@ -7,6 +7,7 @@ import 'package:game_saver/pages/home_page.dart';
 import 'package:game_saver/pages/round_x_page.dart';
 import 'package:game_saver/pages/scoreboard.dart';
 import 'package:game_saver/res/colors.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
-      // TODO: Force in to portrait mode
       title: 'game_saver',
       theme: ThemeData(
         primarySwatch: ProjectColors.primarySwatch,

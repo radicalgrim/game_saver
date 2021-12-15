@@ -1,5 +1,4 @@
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:game_saver/pages/add_players_page.dart';
 import 'package:game_saver/pages/round_x_page.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
@@ -162,7 +161,8 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                   child: const Text(ProjectStrings.gameCustStartGame,
                       style: ProjectTextStyles.buttonLargeTextStyle),
                   onPressed: () {
-                    if (globals.currentGame!.name == null || globals.currentGame!.name == "") {
+                    if (globals.currentGame!.name == null ||
+                        globals.currentGame!.name == "") {
                       globals.showAlertDialog(
                           context, ProjectStrings.gameCustReqError);
                     } else {

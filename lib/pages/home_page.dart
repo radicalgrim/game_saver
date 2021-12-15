@@ -19,7 +19,6 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ProjectColors.primarySwatch.shade50,
-      // TODO: Make the page structure look a bit better
       body: SafeArea(
         child: Center(
           child: Column(

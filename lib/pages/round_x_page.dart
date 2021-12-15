@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:game_saver/pages/end_of_round.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
@@ -39,22 +37,20 @@ class RoundXPageState extends State<RoundXPage> {
   void nextPlayer() {
     globals.currentGame!.currentPlayer = globals.currentGame!.currentPlayer + 1;
 
-    if (globals.gameOptionEndRoundOnPlayer 
-          && globals.currentGame!.currentPlayer == globals.currentGame!.totalPlayers())
-    {
+    if (globals.gameOptionEndRoundOnPlayer &&
+        globals.currentGame!.currentPlayer ==
+            globals.currentGame!.totalPlayers()) {
       globals.currentGame!.setTime();
       Navigator.push(
-        context,
-        PageTransition(
-          type: PageTransitionType.fade, child: const EndOfRound()));
-    }
-    else
-    {
+          context,
+          PageTransition(
+              type: PageTransitionType.fade, child: const EndOfRound()));
+    } else {
       globals.currentGame!.currentPlayer %= globals.currentGame!.totalPlayers();
       Navigator.push(
-        context,
-        PageTransition(
-            type: PageTransitionType.fade, child: const RoundXPage()));
+          context,
+          PageTransition(
+              type: PageTransitionType.fade, child: const RoundXPage()));
     }
   }
 

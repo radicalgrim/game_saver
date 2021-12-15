@@ -79,7 +79,6 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: FormBuilderTextField(
-                            // TODO: Make text input automatically uppercase
                             onEditingComplete: () {
                               submitPlayer();
                             },
