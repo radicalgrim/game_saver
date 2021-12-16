@@ -24,7 +24,7 @@ class EndOfRoundState extends State<EndOfRound> {
 
   String roundTime = globals.currentGame!.elapsedTime;
 
-  int height = 50 * globals.currentGame!.totalPlayers();
+  int height = 60 * globals.currentGame!.totalPlayers();
 
   void changeScoresButton() {
     globals.currentGame!.currentPlayer = 0;
@@ -109,7 +109,8 @@ class EndOfRoundState extends State<EndOfRound> {
                   ),
                 ),
                 width: 350,
-                height: height as double,
+                height: (height as double) + 12,
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 color: ProjectColors.primarySwatch.shade100,
               ),
               Column(

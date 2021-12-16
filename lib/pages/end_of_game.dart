@@ -33,7 +33,7 @@ class EndOfGamePageState extends State<EndOfGamePage> {
     Navigator.push(context, PageTransition(child: const AddPlayersPage(), type: PageTransitionType.fade));
   }
 
-  var timerHeight = (50 - (globals.currentGame!.showTimer ? 0 : 50)) as double;
+  var timerHeight = (56 - (globals.currentGame!.showTimer ? 0 : 56)) as double;
 
   Widget getHonorableMentionsWidget()
   {
@@ -52,7 +52,8 @@ class EndOfGamePageState extends State<EndOfGamePage> {
                   ],),
                 ),
               width: 350,
-              height: (50 * (globals.currentGame!.totalPlayers() - 1)) as double,
+              height: (70 * (globals.currentGame!.totalPlayers() - 1)) as double,
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               color: ProjectColors.primarySwatch.shade100,
             );
     }
@@ -98,7 +99,8 @@ class EndOfGamePageState extends State<EndOfGamePage> {
                   ],),
                 ),
                 width: 350,
-                height: 50,
+                height: 70,
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 color: ProjectColors.primarySwatch.shade100,
               ),
               Padding(

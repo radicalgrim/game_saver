@@ -65,6 +65,7 @@ class ScoreboardPageState extends State<ScoreboardPage> {
                 ),
                 width: 350,
                 height: 400,
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 color: ProjectColors.primarySwatch.shade100,
               ),
             ],
