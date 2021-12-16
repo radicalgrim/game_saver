@@ -45,9 +45,10 @@ class RoundXPageState extends State<RoundXPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 50),
+                  padding: const EdgeInsets.only(top: 50),
                   child: Text("Round $roundNum",
                       style: ProjectTextStyles.pageTitleTextStyle),
                 ),
@@ -58,51 +59,53 @@ class RoundXPageState extends State<RoundXPage> {
                       borderRadius: const BorderRadius.all(Radius.circular(8))),
                   child: globals.currentGame!.playersView[playerIndex],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FormBuilder(
-                      key: _formKey,
-                      onChanged: () {
-                        _formKey.currentState?.save();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: FormBuilderTextField(
-                          name: "score",
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            constraints: BoxConstraints(
-                              maxWidth: 70,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                            ),
-                            filled: true,
-                            hintText: ProjectStrings.roundInputExample,
-                            fillColor: Colors.white70,
-                            isDense: true,
+                FormBuilder(
+                  key: _formKey,
+                  onChanged: () {
+                    _formKey.currentState?.save();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: FormBuilderTextField(
+                      name: "score",
+                      keyboardType: TextInputType.number,
+                      style: ProjectTextStyles.playerScoreInputTextStyle,
+                      textAlign: TextAlign.center,
+                      showCursor: false,
+                      decoration: InputDecoration(
+                        constraints: const BoxConstraints(
+                          maxWidth: 225,
+                        ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
                           ),
                         ),
+                        filled: true,
+                        hintText: ProjectStrings.scoreInputHint,
+                        labelText: ProjectStrings.scoreInputLabel,
+                        labelStyle:
+                            ProjectTextStyles.playerScoreInputLabelTextStyle,
+                        fillColor: Colors.white70,
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.add_circle),
-                      color: ProjectColors.primarySwatch.shade700,
-                      onPressed: () {
-                        if (_formKey.currentState!.fields["score"]?.value !=
-                            0) {
-                          globals.currentGame!.players[playerIndex].points +=
-                              int.parse(_formKey
-                                  .currentState!.fields["score"]?.value);
-                          nextPlayer();
-                        }
-                      },
-                    ),
-                  ],
+                  ),
                 ),
+                // IconButton(
+                //   icon: const Icon(Icons.add_circle),
+                //   color: ProjectColors.primarySwatch.shade700,
+                //   onPressed: () {
+                //     final pointsToAdd = int.parse(
+                //         _formKey.currentState!.fields["score"]?.value);
+                //     if (pointsToAdd != 0) {
+                //       globals.currentGame!.players[playerIndex].pointsToAdd =
+                //           pointsToAdd;
+                //       globals.currentGame!.players[playerIndex].score +=
+                //           pointsToAdd;
+                //       nextPlayer();
+                //     }
+                //   },
+                // ),
                 // Row(
                 //   children: [
                 //     Padding(
@@ -142,36 +145,38 @@ class RoundXPageState extends State<RoundXPage> {
                 //         )),
                 //   ],
                 // ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 20, 0, 0),
-                          child: ElevatedButton(
-                            child: const Text(ProjectStrings.roundPrevious,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              previousPlayer();
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
-                          child: ElevatedButton(
-                            child: const Text(ProjectStrings.roundNext,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              nextPlayer();
-                            },
-                          ),
-                        )
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.roundPrevious,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          previousPlayer();
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.roundNext,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          final pointsToAdd = int.parse(
+                              _formKey.currentState!.fields["score"]?.value);
+                          if (pointsToAdd != 0) {
+                            globals.currentGame!.players[playerIndex]
+                                .pointsToAdd = pointsToAdd;
+                            globals.currentGame!.players[playerIndex].score +=
+                                pointsToAdd;
+                            nextPlayer();
+                          }
+                        },
+                      )
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+                  padding: const EdgeInsets.only(bottom: 80),
                   child: ElevatedButton(
                     child: const Text(ProjectStrings.roundEnd,
                         style: ProjectTextStyles.buttonLargeTextStyle),

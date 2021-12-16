@@ -46,11 +46,12 @@ class ProjectStrings {
 
   // Round Pages
   static const String roundHeader = "Game Rounds";
-  static const String roundNext = "Skip Player";
+  static const String roundNext = "Next Player";
   static const String roundPrevious = "Previous Player";
   static const String roundEnd = "End Round";
   static const String roundInput = "Score:";
-  static const String roundInputExample = "e.g. 12";
+  static const String scoreInputHint = "0";
+  static const String scoreInputLabel = "Points";
 
   //End of Round
   static const String eofRoundHeader = "Round Complete";

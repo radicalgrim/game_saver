@@ -7,4 +7,5 @@ class ProjectColors {
 
   static const lightTextColor = Colors.white;
   static final darkTextColor = primarySwatch.shade900;
+  static const blackTextColor = Colors.black;
 }

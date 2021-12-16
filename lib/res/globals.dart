@@ -37,7 +37,8 @@ class PlayerScoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String displayName = info.displayname.toString();
-    String score = info.points.toString();
+    String score = info.score.toString();
+    String pointsToAdd = info.pointsToAdd.toString();
 
     // if (currentGame != null)
     // {
@@ -57,16 +58,34 @@ class PlayerScoreWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            displayName,
-            style: ProjectTextStyles.appMiniTitleTextStyle,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Current Player",
+                style: ProjectTextStyles.playerScoreHintTextStyle,
+              ),
+              Text(
+                "Score",
+                style: ProjectTextStyles.playerScoreHintTextStyle,
+              ),
+            ],
           ),
-          Text(
-            score,
-            style: ProjectTextStyles.appMiniTitleTextStyle,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                displayName,
+                style: ProjectTextStyles.playerScoreTextStyle,
+              ),
+              Text(
+                score,
+                style: ProjectTextStyles.playerScoreTextStyle,
+              ),
+            ],
           ),
         ],
       ),
