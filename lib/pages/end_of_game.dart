@@ -84,14 +84,14 @@ class EndOfGamePageState extends State<EndOfGamePage> {
                     children: [
                       ElevatedButton(
                         child: const Text(ProjectStrings.eofGameScoreboards,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           scoreboards();
                         },
                       ),
                       ElevatedButton(
                         child: const Text(ProjectStrings.eofGameNewGame,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           newGame();
                         },

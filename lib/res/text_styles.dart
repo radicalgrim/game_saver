@@ -13,8 +13,10 @@ class ProjectTextStyles {
       color: ProjectColors.darkTextColor);
   static final TextStyle pageTitle2TextStyle =
       TextStyle(fontSize: 32, color: ProjectColors.darkTextColor);
-  static const TextStyle buttonLargeTextStyle =
+  static const TextStyle buttonStandardTextStyle =
       TextStyle(fontSize: 20, color: ProjectColors.lightTextColor);
+  static const TextStyle buttonLargeTextStyle =
+      TextStyle(fontSize: 24, color: ProjectColors.lightTextColor);
   static final TextStyle appMiniTitleTextStyle =
       TextStyle(fontSize: 25, color: ProjectColors.darkTextColor);
   static final TextStyle playerScoreTextStyle =
@@ -25,4 +27,6 @@ class ProjectTextStyles {
       TextStyle(fontSize: 65, color: ProjectColors.blackTextColor);
   static final TextStyle playerScoreInputLabelTextStyle =
       TextStyle(fontSize: 22, color: ProjectColors.darkTextColor);
+  static const TextStyle gameListTitleTextStyle =
+      TextStyle(fontSize: 20, color: ProjectColors.lightTextColor);
 }

@@ -159,7 +159,7 @@ class CustomizeGamePageState extends State<CustomizeGamePage> {
                 padding: const EdgeInsets.all(40.0),
                 child: ElevatedButton(
                   child: const Text(ProjectStrings.gameCustStartGame,
-                      style: ProjectTextStyles.buttonLargeTextStyle),
+                      style: ProjectTextStyles.buttonStandardTextStyle),
                   onPressed: () {
                     if (globals.currentGame!.name == null ||
                         globals.currentGame!.name == "") {

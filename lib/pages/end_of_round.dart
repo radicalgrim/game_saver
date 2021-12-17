@@ -10,14 +10,14 @@ import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 import 'package:page_transition/page_transition.dart';
 
-class EndOfRound extends StatefulWidget {
-  const EndOfRound({Key? key}) : super(key: key);
+class EndOfRoundPage extends StatefulWidget {
+  const EndOfRoundPage({Key? key}) : super(key: key);
   static const String route = "/endofround";
   @override
-  EndOfRoundState createState() => EndOfRoundState();
+  EndOfRoundPageState createState() => EndOfRoundPageState();
 }
 
-class EndOfRoundState extends State<EndOfRound> {
+class EndOfRoundPageState extends State<EndOfRoundPage> {
   final fieldText = TextEditingController();
 
   final int roundNum = globals.currentGame!.round + 1;
@@ -51,7 +51,8 @@ class EndOfRoundState extends State<EndOfRound> {
   void endGame() {
     globals.currentGame!.setTime();
     globals.currentGame!.stopWatch();
-    globals.topScores.add(globals.currentGame!.getWinner());
+    //globals.topScores.add(globals.currentGame!.getWinner());
+    globals.gameList.add(globals.currentGame);
     Navigator.push(
         context,
         PageTransition(
@@ -110,14 +111,14 @@ class EndOfRoundState extends State<EndOfRound> {
                     children: [
                       ElevatedButton(
                         child: const Text(ProjectStrings.eofRoundChange,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           changeScoresButton();
                         },
                       ),
                       ElevatedButton(
                         child: const Text(ProjectStrings.eofRoundNext,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           nextRound();
                         },
@@ -129,7 +130,7 @@ class EndOfRoundState extends State<EndOfRound> {
                   padding: const EdgeInsets.only(bottom: 80),
                   child: ElevatedButton(
                     child: const Text(ProjectStrings.eofGameButton,
-                        style: ProjectTextStyles.buttonLargeTextStyle),
+                        style: ProjectTextStyles.buttonStandardTextStyle),
                     onPressed: () {
                       globals.currentGame!.setTime();
                       globals.currentGame!.stopWatch();

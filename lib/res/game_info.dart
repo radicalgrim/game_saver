@@ -6,12 +6,13 @@ import 'package:game_saver/res/globals.dart';
 import 'package:game_saver/res/player_info.dart';
 
 class GameInfo {
-  GameInfo(this.players);
+  GameInfo({required this.players, this.name, this.timestamp});
 
   List<PlayerInfo> players = [];
   List<PlayerInfo> displayedPlayers = [];
   PlayerInfo? winner;
   String? name;
+  DateTime? timestamp = DateTime.now();
 
   int round = 0;
 

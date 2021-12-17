@@ -98,14 +98,14 @@ class RoundXPageState extends State<RoundXPage> {
                     children: [
                       ElevatedButton(
                         child: const Text(ProjectStrings.roundPrevious,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           previousPlayer();
                         },
                       ),
                       ElevatedButton(
                         child: const Text(ProjectStrings.roundNext,
-                            style: ProjectTextStyles.buttonLargeTextStyle),
+                            style: ProjectTextStyles.buttonStandardTextStyle),
                         onPressed: () {
                           saveScore();
                           nextPlayer();
@@ -118,7 +118,7 @@ class RoundXPageState extends State<RoundXPage> {
                   padding: const EdgeInsets.only(bottom: 80),
                   child: ElevatedButton(
                     child: const Text(ProjectStrings.roundEnd,
-                        style: ProjectTextStyles.buttonLargeTextStyle),
+                        style: ProjectTextStyles.buttonStandardTextStyle),
                     onPressed: () {
                       globals.currentGame!.setTime();
                       saveScore();
@@ -126,7 +126,7 @@ class RoundXPageState extends State<RoundXPage> {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: const EndOfRound()));
+                              child: const EndOfRoundPage()));
                     },
                   ),
                 )
@@ -160,7 +160,7 @@ class RoundXPageState extends State<RoundXPage> {
       Navigator.push(
           context,
           PageTransition(
-              type: PageTransitionType.fade, child: const EndOfRound()));
+              type: PageTransitionType.fade, child: const EndOfRoundPage()));
     } else {
       globals.currentGame!.currentPlayer %= globals.currentGame!.totalPlayers();
       Navigator.push(

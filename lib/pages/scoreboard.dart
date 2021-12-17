@@ -28,47 +28,43 @@ class ScoreboardPageState extends State<ScoreboardPage> {
           },
         ),
       ),
-      // appBar: AppBar(
-      //   title: const Text(ProjectStrings.scoreboardHeader),
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      // ),
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                child: Text(ProjectStrings.scoreboardPreviousGames,
-                    style: ProjectTextStyles.pageTitleTextStyle),
-              ),
-              Container(
-                child: Center(
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        // Widget which creates [ItemWidget] in scrollable list.
-                        shrinkWrap: true,
-                        itemCount: globals.topScores
-                            .length, // Number of widget to be created.
-                        itemBuilder: (context,
-                                itemIndex) => // Builder function for every item with index.
-                            globals.topScores[itemIndex],
-                      )
-                    ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                  child: Text(ProjectStrings.scoreboardPreviousGames,
+                      style: ProjectTextStyles.pageTitleTextStyle),
+                ),
+                Container(
+                  height: 400,
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  decoration: BoxDecoration(
+                      color: ProjectColors.primarySwatch.shade100,
+                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          // Widget which creates [ItemWidget] in scrollable list.
+                          shrinkWrap: true,
+                          itemCount: globals.topScores
+                              .length, // Number of widget to be created.
+                          itemBuilder: (context,
+                                  itemIndex) => // Builder function for every item with index.
+                              //globals.topScores[itemIndex],
+                              globals.gameListDisplay[itemIndex],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                width: 350,
-                height: 400,
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                color: ProjectColors.primarySwatch.shade100,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

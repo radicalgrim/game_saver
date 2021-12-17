@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:game_saver/pages/add_players_page.dart';
 import 'package:game_saver/pages/customize_game_page.dart';
+import 'package:game_saver/pages/end_of_game.dart';
 import 'package:game_saver/pages/end_of_round.dart';
+import 'package:game_saver/pages/game_details_page.dart';
 import 'package:game_saver/pages/game_options_page.dart';
 import 'package:game_saver/pages/home_page.dart';
 import 'package:game_saver/pages/round_x_page.dart';
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
       routes: {
         AddPlayersPage.route: (_) => const AddPlayersPage(),
         CustomizeGamePage.route: (_) => const CustomizeGamePage(),
-        EndOfRound.route: (_) => const EndOfRound(),
+        EndOfGamePage.route: (_) => const EndOfGamePage(),
+        EndOfRoundPage.route: (_) => const EndOfRoundPage(),
+        GameDetailsPage.route: (_) => const GameDetailsPage(),
         GameOptionsPage.route: (_) => const GameOptionsPage(),
         RoundXPage.route: (_) => const RoundXPage(),
         ScoreboardPage.route: (_) => const ScoreboardPage(),

@@ -11,7 +11,10 @@ class ProjectStrings {
 
   // Scoreboard page
   static const String scoreboardHeader = scoreboardsButton;
-  static const String scoreboardPreviousGames = "Game Winners";
+  static const String scoreboardPreviousGames = "My Games";
+
+  // Game Deatails page
+  static const String gameDetailsHeader = "Game Details";
 
   // Add Players Page
   static const String addPlayersHeading = "Add Your Players";

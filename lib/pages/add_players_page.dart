@@ -116,11 +116,11 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: ElevatedButton(
                     child: const Text(ProjectStrings.nextButton,
-                        style: ProjectTextStyles.buttonLargeTextStyle),
+                        style: ProjectTextStyles.buttonStandardTextStyle),
                     onPressed: () {
                       if (gamePlayers.isNotEmpty) {
                         // Create new game
-                        globals.currentGame = GameInfo(gamePlayers);
+                        globals.currentGame = GameInfo(players: gamePlayers);
 
                         //Set defaults from options page for next game
                         // globals.currentGame!.showTimer = globals.gameOptionDefaultTimerON;
