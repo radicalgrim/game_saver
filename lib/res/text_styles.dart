@@ -11,6 +11,8 @@ class ProjectTextStyles {
       fontWeight: FontWeight.bold,
       fontSize: 35,
       color: ProjectColors.darkTextColor);
+  static final TextStyle pageTitle2TextStyle =
+      TextStyle(fontSize: 32, color: ProjectColors.darkTextColor);
   static const TextStyle buttonLargeTextStyle =
       TextStyle(fontSize: 20, color: ProjectColors.lightTextColor);
   static final TextStyle appMiniTitleTextStyle =

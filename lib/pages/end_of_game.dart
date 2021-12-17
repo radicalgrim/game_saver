@@ -24,6 +24,89 @@ class EndOfGamePageState extends State<EndOfGamePage> {
         "\n\nHonorable Mentions";
   }
 
+  //PAGE
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ProjectColors.primarySwatch.shade50,
+      appBar: AppBar(
+        title: Text((globals.currentGame!.name as String) + " Finished"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Text(ProjectStrings.eofGameTitle,
+                      style: ProjectTextStyles.pageTitleTextStyle),
+                ),
+                Container(
+                  height: 90,
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  decoration: BoxDecoration(
+                      color: ProjectColors.primarySwatch.shade100,
+                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          // Widget which creates [ItemWidget] in scrollable list.
+                          shrinkWrap: true,
+                          itemCount: 1, // Number of widget to be created.
+                          itemBuilder: (context,
+                                  itemIndex) => // Builder function for every item with index.
+                              globals.currentGame!.getWinner(),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: timerHeight),
+                  child: Text(roundTitle(),
+                      style: ProjectTextStyles.pageTitle2TextStyle),
+                ),
+                getHonorableMentionsWidget(),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.eofGameScoreboards,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          scoreboards();
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.eofGameNewGame,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          newGame();
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   scoreboards() {
     Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.push(
@@ -45,6 +128,11 @@ class EndOfGamePageState extends State<EndOfGamePage> {
   Widget getHonorableMentionsWidget() {
     if (globals.currentGame!.totalPlayers() != 1) {
       return Container(
+        height: 80 * (globals.currentGame!.totalPlayers() - 1).toDouble(),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+        decoration: BoxDecoration(
+            color: ProjectColors.primarySwatch.shade100,
+            borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: Center(
           child: Column(
             children: [
@@ -60,99 +148,9 @@ class EndOfGamePageState extends State<EndOfGamePage> {
             ],
           ),
         ),
-        width: 350,
-        height: 70 * (globals.currentGame!.totalPlayers() - 1).toDouble(),
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-        color: ProjectColors.primarySwatch.shade100,
       );
     } else {
       return const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
     }
-  }
-
-  //PAGE
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ProjectColors.primarySwatch.shade50,
-      appBar: AppBar(
-        title: Text((globals.currentGame!.name as String) + " Finished"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                child: Text(ProjectStrings.eofGameTitle,
-                    style: ProjectTextStyles.pageTitleTextStyle),
-              ),
-              Container(
-                child: Center(
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        // Widget which creates [ItemWidget] in scrollable list.
-                        shrinkWrap: true,
-                        itemCount: 1, // Number of widget to be created.
-                        itemBuilder: (context,
-                                itemIndex) => // Builder function for every item with index.
-                            globals.currentGame!.getWinner(),
-                      )
-                    ],
-                  ),
-                ),
-                width: 350,
-                height: 70,
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                color: ProjectColors.primarySwatch.shade100,
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: timerHeight, horizontal: 20),
-                child: Text(roundTitle(),
-                    style: ProjectTextStyles.pageTitleTextStyle),
-              ),
-              getHonorableMentionsWidget(),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
-                        child: ElevatedButton(
-                          child: const Text(ProjectStrings.eofGameScoreboards,
-                              style: ProjectTextStyles.buttonLargeTextStyle),
-                          onPressed: () {
-                            scoreboards();
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
-                        child: ElevatedButton(
-                          child: const Text(ProjectStrings.eofGameNewGame,
-                              style: ProjectTextStyles.buttonLargeTextStyle),
-                          onPressed: () {
-                            newGame();
-                          },
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

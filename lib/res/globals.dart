@@ -38,26 +38,9 @@ class PlayerScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     String displayName = info.displayname.toString();
     String score = info.score.toString();
-    String pointsToAdd = info.pointsToAdd.toString();
-
-    // if (currentGame != null)
-    // {
-    //   info.icon ??= currentGame!.highlowOption == HighLowOptions.high ? Icons.arrow_upward_sharp : Icons.arrow_downward_sharp;
-    // }
-    // else
-    // {
-    //   info.icon = Icons.arrow_upward_sharp;
-    // }
-
-    // return InkWell( // Enables taps for child and add ripple effect when child widget is long pressed.
-    //   child: ListTile( // Useful standard widget for displaying something in ListView.
-    //     leading: Icon(info.icon),
-    //     title: Text("Player: $displayName                           Score: $score"),
-    //   )
-    // );
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

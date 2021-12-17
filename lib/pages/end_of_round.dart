@@ -24,7 +24,7 @@ class EndOfRoundState extends State<EndOfRound> {
 
   String roundTime = globals.currentGame!.elapsedTime;
 
-  int height = 60 * globals.currentGame!.totalPlayers();
+  int height = 80 * globals.currentGame!.totalPlayers();
 
   void changeScoresButton() {
     globals.currentGame!.currentPlayer = 0;
@@ -75,76 +75,70 @@ class EndOfRoundState extends State<EndOfRound> {
       ),
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                child: Text(roundTitle(),
-                    style: ProjectTextStyles.pageTitleTextStyle),
-              ),
-              Container(
-                child: Center(
-                  child: Column(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Text(roundTitle(),
+                      style: ProjectTextStyles.pageTitleTextStyle),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: ProjectColors.primarySwatch.shade100,
+                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                  height: height.toDouble(),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Center(
+                    child: ListView.builder(
+                      // Widget which creates [ItemWidget] in scrollable list.
+                      shrinkWrap: true,
+                      itemCount: globals.currentGame!
+                          .totalPlayers(), // Number of widgets to be created.
+                      itemBuilder: (context,
+                              itemIndex) => // Builder function for every item with index.
+                          globals.currentGame!.playersView[itemIndex],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ListView.builder(
-                        // Widget which creates [ItemWidget] in scrollable list.
-                        shrinkWrap: true,
-                        itemCount: globals.currentGame!
-                            .totalPlayers(), // Number of widgets to be created.
-                        itemBuilder: (context,
-                                itemIndex) => // Builder function for every item with index.
-                            globals.currentGame!.playersView[itemIndex],
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.eofRoundChange,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          changeScoresButton();
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text(ProjectStrings.eofRoundNext,
+                            style: ProjectTextStyles.buttonLargeTextStyle),
+                        onPressed: () {
+                          nextRound();
+                        },
                       )
                     ],
                   ),
                 ),
-                width: 350,
-                height: height.toDouble() + 12,
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                color: ProjectColors.primarySwatch.shade100,
-              ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
-                        child: ElevatedButton(
-                          child: const Text(ProjectStrings.eofRoundChange,
-                              style: ProjectTextStyles.buttonLargeTextStyle),
-                          onPressed: () {
-                            changeScoresButton();
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
-                        child: ElevatedButton(
-                          child: const Text(ProjectStrings.eofRoundNext,
-                              style: ProjectTextStyles.buttonLargeTextStyle),
-                          onPressed: () {
-                            nextRound();
-                          },
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 150, 0, 0),
-                child: ElevatedButton(
-                  child: const Text(ProjectStrings.eofGameButton,
-                      style: ProjectTextStyles.buttonLargeTextStyle),
-                  onPressed: () {
-                    globals.currentGame!.setTime();
-                    globals.currentGame!.stopWatch();
-                    endGame();
-                  },
-                ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: ElevatedButton(
+                    child: const Text(ProjectStrings.eofGameButton,
+                        style: ProjectTextStyles.buttonLargeTextStyle),
+                    onPressed: () {
+                      globals.currentGame!.setTime();
+                      globals.currentGame!.stopWatch();
+                      endGame();
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
