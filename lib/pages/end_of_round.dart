@@ -138,7 +138,7 @@ class EndOfRoundPageState extends State<EndOfRoundPage> {
   void endGame() {
     globals.currentGame!.setTime();
     globals.currentGame!.stopWatch();
-    globals.gameList.add(globals.currentGame);
+    //globals.gameList.add(globals.currentGame);
     Navigator.push(
         context,
         PageTransition(

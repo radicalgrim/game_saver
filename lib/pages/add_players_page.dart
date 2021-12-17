@@ -48,11 +48,9 @@ class AddPlayersPageState extends State<AddPlayersPage> {
                       style: ProjectTextStyles.pageTitleTextStyle),
                 ),
                 Container(
-                    // TODO: Make them draggable
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        border: Border.all(
-                          color: ProjectColors.primarySwatch,
-                        ),
+                        color: ProjectColors.primarySwatch.shade100,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(8))),
                     width: 350,
@@ -189,16 +187,10 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        child: ListTile(
-      leading: IconButton(
-        icon: Icon(info.icon),
-        onPressed: () {
-          globals.showAlertDialog(context,
-              "You and I both wish this removed the player from the list bud. I can't get it to update the state");
-        },
-      ),
-      title: Text(info.displayname.toString()),
-    ));
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 35),
+      child: Text(info.displayname.toString(),
+          style: ProjectTextStyles.playerScoreTextStyle),
+    );
   }
 }
