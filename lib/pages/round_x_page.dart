@@ -171,8 +171,8 @@ class RoundXPageState extends State<RoundXPage> {
   }
 
   void saveScore() {
-    if (_formKey.currentState!.fields["score"]?.value != null &&
-        _formKey.currentState!.fields["score"]?.value != 0) {
+    final formData = _formKey.currentState!.fields["score"]?.value;
+    if (formData != null && formData != 0 && formData != "") {
       final pointsToAdd =
           int.parse(_formKey.currentState!.fields["score"]?.value);
       globals.currentGame!.players[playerIndex].pointsToAdd = pointsToAdd;
