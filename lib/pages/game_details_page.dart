@@ -1,3 +1,4 @@
+import 'package:game_saver/res/game_info.dart';
 import 'package:game_saver/res/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -5,15 +6,12 @@ import 'package:game_saver/res/colors.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 
-class GameDetailsPage extends StatefulWidget {
-  const GameDetailsPage({Key? key}) : super(key: key);
-  static const String route = "/game_details";
-  @override
-  GameDetailsPageState createState() => GameDetailsPageState();
-}
+class GameDetailsPage extends StatelessWidget {
+  final GameInfo game;
 
-class GameDetailsPageState extends State<GameDetailsPage> {
-  //PAGE
+  const GameDetailsPage({required this.game, Key? key}) : super(key: key);
+  static const String route = "/game_details";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +37,40 @@ class GameDetailsPageState extends State<GameDetailsPage> {
                       const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                   child: Text(ProjectStrings.gameDetailsHeader,
                       style: ProjectTextStyles.pageTitleTextStyle),
+                ),
+                Container(
+                  height: 400,
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  decoration: BoxDecoration(
+                      color: ProjectColors.primarySwatch.shade100,
+                      borderRadius: const BorderRadius.all(Radius.circular(8))),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 80 * (game.totalPlayers()).toDouble(),
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          decoration: BoxDecoration(
+                              color: ProjectColors.primarySwatch.shade100,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8))),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                ListView.builder(
+                                    // Widget which creates [ItemWidget] in scrollable list.
+                                    shrinkWrap: true,
+                                    itemCount: game.players.length,
+                                    itemBuilder: (context,
+                                            itemIndex) => // Builder function for every item with index.
+                                        game.getPlayersByRank())
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

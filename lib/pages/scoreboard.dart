@@ -52,7 +52,7 @@ class ScoreboardPageState extends State<ScoreboardPage> {
                         ListView.builder(
                           // Widget which creates [ItemWidget] in scrollable list.
                           shrinkWrap: true,
-                          itemCount: globals.topScores
+                          itemCount: globals.gameList
                               .length, // Number of widget to be created.
                           itemBuilder: (context,
                                   itemIndex) => // Builder function for every item with index.

@@ -1,14 +1,13 @@
 library game_saver.globals;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:game_saver/pages/game_details_page.dart';
 import 'package:game_saver/res/game_info.dart';
 import 'package:game_saver/res/player_info.dart';
 import 'package:game_saver/res/strings.dart';
 import 'package:game_saver/res/text_styles.dart';
 import 'package:intl/intl.dart';
-
-import 'colors.dart';
+import 'package:page_transition/page_transition.dart';
 
 //Game Options Page
 bool gameOptionDefaultTimerON = false;
@@ -26,7 +25,13 @@ List<GameInfo?> gameList = [
   GameInfo(
       players: [PlayerInfo(69, 'Josh'), PlayerInfo(42, 'Hagrid')],
       name: "A Preloaded Dummy Game",
-      timestamp: DateTime.now())
+      timestamp: DateTime.fromMicrosecondsSinceEpoch(98765432100)),
+  GameInfo(players: [
+    PlayerInfo(45657, 'Rand al\'Thor'),
+    PlayerInfo(2, 'John Cena'),
+    PlayerInfo(46, 'fred'),
+    PlayerInfo(248, 'X AE A-Xii')
+  ], name: "Another Preloaded Dummy Game", timestamp: DateTime.now())
 ];
 
 GameInfo? currentGame;
@@ -36,7 +41,8 @@ List<Widget> topScores = [
 ]; //Initialize with fake player
 
 List<Widget> gameListDisplay = [
-  GameDisplayWidget(gameList[0])
+  GameDisplayWidget(gameList[0]),
+  GameDisplayWidget(gameList[1])
 ]; //Initialize with fake game
 
 class GameDisplayWidget extends StatelessWidget {
@@ -55,12 +61,21 @@ class GameDisplayWidget extends StatelessWidget {
         children: [
           SizedBox(
               width: 300,
-              height: 50,
               child: ElevatedButton(
-                  onPressed: () => {},
-                  child: Text(
-                    displayName!,
-                    style: ProjectTextStyles.buttonLargeTextStyle,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: GameDetailsPage(game: info!)));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Text(
+                      displayName!,
+                      style: ProjectTextStyles.buttonLargeTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
                   ))),
           Padding(
             padding: const EdgeInsets.all(8.0),

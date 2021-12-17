@@ -26,39 +26,6 @@ class EndOfRoundPageState extends State<EndOfRoundPage> {
 
   int height = 80 * globals.currentGame!.totalPlayers();
 
-  void changeScoresButton() {
-    globals.currentGame!.currentPlayer = 0;
-    Navigator.push(
-        context,
-        PageTransition(
-            type: PageTransitionType.fade, child: const RoundXPage()));
-  }
-
-  String roundTitle() {
-    return "Round $roundNum" +
-        (globals.currentGame!.showTimer ? "\nRound Time: $roundTime" : "");
-  }
-
-  void nextRound() {
-    globals.currentGame!.round++;
-    globals.currentGame!.currentPlayer = 0;
-    Navigator.push(
-        context,
-        PageTransition(
-            type: PageTransitionType.fade, child: const RoundXPage()));
-  }
-
-  void endGame() {
-    globals.currentGame!.setTime();
-    globals.currentGame!.stopWatch();
-    //globals.topScores.add(globals.currentGame!.getWinner());
-    globals.gameList.add(globals.currentGame);
-    Navigator.push(
-        context,
-        PageTransition(
-            type: PageTransitionType.fade, child: const EndOfGamePage()));
-  }
-
   //PAGE
   @override
   Widget build(BuildContext context) {
@@ -144,5 +111,37 @@ class EndOfRoundPageState extends State<EndOfRoundPage> {
         ),
       ),
     );
+  }
+
+  void changeScoresButton() {
+    globals.currentGame!.currentPlayer = 0;
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const RoundXPage()));
+  }
+
+  String roundTitle() {
+    return "Round $roundNum" +
+        (globals.currentGame!.showTimer ? "\nRound Time: $roundTime" : "");
+  }
+
+  void nextRound() {
+    globals.currentGame!.round++;
+    globals.currentGame!.currentPlayer = 0;
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const RoundXPage()));
+  }
+
+  void endGame() {
+    globals.currentGame!.setTime();
+    globals.currentGame!.stopWatch();
+    globals.gameList.add(globals.currentGame);
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.fade, child: const EndOfGamePage()));
   }
 }

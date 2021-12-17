@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
         CustomizeGamePage.route: (_) => const CustomizeGamePage(),
         EndOfGamePage.route: (_) => const EndOfGamePage(),
         EndOfRoundPage.route: (_) => const EndOfRoundPage(),
-        GameDetailsPage.route: (_) => const GameDetailsPage(),
         GameOptionsPage.route: (_) => const GameOptionsPage(),
         RoundXPage.route: (_) => const RoundXPage(),
         ScoreboardPage.route: (_) => const ScoreboardPage(),
