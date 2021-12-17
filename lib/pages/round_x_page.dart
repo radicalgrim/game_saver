@@ -91,60 +91,6 @@ class RoundXPageState extends State<RoundXPage> {
                     ),
                   ),
                 ),
-                // IconButton(
-                //   icon: const Icon(Icons.add_circle),
-                //   color: ProjectColors.primarySwatch.shade700,
-                //   onPressed: () {
-                //     final pointsToAdd = int.parse(
-                //         _formKey.currentState!.fields["score"]?.value);
-                //     if (pointsToAdd != 0) {
-                //       globals.currentGame!.players[playerIndex].pointsToAdd =
-                //           pointsToAdd;
-                //       globals.currentGame!.players[playerIndex].score +=
-                //           pointsToAdd;
-                //       nextPlayer();
-                //     }
-                //   },
-                // ),
-                // Row(
-                //   children: [
-                //     Padding(
-                //       padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
-                //       child: SizedBox(
-                //         width: 100,
-                //         height: 50,
-                //         child: TextField(
-                //           keyboardType: TextInputType.number,
-                //           decoration: const InputDecoration(
-                //             hintText: ProjectStrings.roundInputExample,
-                //             labelText: ProjectStrings.roundInput,
-                //             contentPadding: EdgeInsets.symmetric(
-                //                 horizontal: 20.0, vertical: 10.0),
-                //           ),
-                //           onChanged: (String value) {
-                //             score = int.parse(value);
-                //           },
-                //           controller: fieldText,
-                //         ),
-                //       ),
-                //     ),
-                //     Padding(
-                //         padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                //         child: IconButton(
-                //           icon: const Icon(Icons.add_circle),
-                //           color: ProjectColors.primarySwatch.shade700,
-                //           onPressed: () {
-                //             if (score != 0) {
-                //               globals.currentGame!.players[playerIndex].points +=
-                //                   score;
-                //               score = 0;
-                //               fieldText.clear();
-                //               nextPlayer();
-                //             }
-                //           },
-                //         )),
-                //   ],
-                // ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Row(
@@ -161,15 +107,8 @@ class RoundXPageState extends State<RoundXPage> {
                         child: const Text(ProjectStrings.roundNext,
                             style: ProjectTextStyles.buttonLargeTextStyle),
                         onPressed: () {
-                          final pointsToAdd = int.parse(
-                              _formKey.currentState!.fields["score"]?.value);
-                          if (pointsToAdd != 0) {
-                            globals.currentGame!.players[playerIndex]
-                                .pointsToAdd = pointsToAdd;
-                            globals.currentGame!.players[playerIndex].score +=
-                                pointsToAdd;
-                            nextPlayer();
-                          }
+                          saveScore();
+                          nextPlayer();
                         },
                       )
                     ],
@@ -182,6 +121,7 @@ class RoundXPageState extends State<RoundXPage> {
                         style: ProjectTextStyles.buttonLargeTextStyle),
                     onPressed: () {
                       globals.currentGame!.setTime();
+                      saveScore();
                       Navigator.push(
                           context,
                           PageTransition(
@@ -227,6 +167,16 @@ class RoundXPageState extends State<RoundXPage> {
           context,
           PageTransition(
               type: PageTransitionType.fade, child: const RoundXPage()));
+    }
+  }
+
+  void saveScore() {
+    if (_formKey.currentState!.fields["score"]?.value != null &&
+        _formKey.currentState!.fields["score"]?.value != 0) {
+      final pointsToAdd =
+          int.parse(_formKey.currentState!.fields["score"]?.value);
+      globals.currentGame!.players[playerIndex].pointsToAdd = pointsToAdd;
+      globals.currentGame!.players[playerIndex].score += pointsToAdd;
     }
   }
 }

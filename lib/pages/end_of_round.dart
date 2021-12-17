@@ -73,15 +73,6 @@ class EndOfRoundState extends State<EndOfRound> {
           },
         ),
       ),
-      // appBar: AppBar(
-      //   title: Text(globals.currentGame!.name as String),
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      // ),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -109,7 +100,7 @@ class EndOfRoundState extends State<EndOfRound> {
                   ),
                 ),
                 width: 350,
-                height: (height as double) + 12,
+                height: height.toDouble() + 12,
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 color: ProjectColors.primarySwatch.shade100,
               ),

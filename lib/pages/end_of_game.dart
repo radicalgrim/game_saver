@@ -16,49 +16,56 @@ class EndOfGamePage extends StatefulWidget {
 }
 
 class EndOfGamePageState extends State<EndOfGamePage> {
-
-  String roundTitle()
-  {
+  String roundTitle() {
     var roundTime = globals.currentGame!.elapsedTime;
-    return (globals.currentGame!.showTimer ? "Total Game Time: $roundTime" : "") + "\n\nHonorable Mentions";
+    return (globals.currentGame!.showTimer
+            ? "Total Game Time: $roundTime"
+            : "") +
+        "\n\nHonorable Mentions";
   }
 
   scoreboards() {
     Navigator.popUntil(context, (route) => route.isFirst);
-    Navigator.push(context, PageTransition(child: const ScoreboardPage(), type: PageTransitionType.fade));
+    Navigator.push(
+        context,
+        PageTransition(
+            child: const ScoreboardPage(), type: PageTransitionType.fade));
   }
 
   newGame() {
     Navigator.popUntil(context, (route) => route.isFirst);
-    Navigator.push(context, PageTransition(child: const AddPlayersPage(), type: PageTransitionType.fade));
+    Navigator.push(
+        context,
+        PageTransition(
+            child: const AddPlayersPage(), type: PageTransitionType.fade));
   }
 
-  var timerHeight = (56 - (globals.currentGame!.showTimer ? 0 : 56)) as double;
+  var timerHeight = 56 - (globals.currentGame!.showTimer ? 0 : 56).toDouble();
 
-  Widget getHonorableMentionsWidget()
-  {
-    if (globals.currentGame!.totalPlayers() != 1)
-    {
+  Widget getHonorableMentionsWidget() {
+    if (globals.currentGame!.totalPlayers() != 1) {
       return Container(
-              child: 
-                Center(child: 
-                  Column(children: [
-                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
-                          shrinkWrap: true,
-                          itemCount: globals.currentGame!.totalPlayers() - 1, // Number of widget to be created.
-                          itemBuilder: (context, itemIndex) => // Builder function for every item with index.
-                              globals.currentGame!.getPlayersByRank(),
-                        )
-                  ],),
-                ),
-              width: 350,
-              height: (70 * (globals.currentGame!.totalPlayers() - 1)) as double,
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              color: ProjectColors.primarySwatch.shade100,
-            );
-    }
-    else
-    {
+        child: Center(
+          child: Column(
+            children: [
+              ListView.builder(
+                // Widget which creates [ItemWidget] in scrollable list.
+                shrinkWrap: true,
+                itemCount: globals.currentGame!.totalPlayers() -
+                    1, // Number of widget to be created.
+                itemBuilder: (context,
+                        itemIndex) => // Builder function for every item with index.
+                    globals.currentGame!.getPlayersByRank(),
+              )
+            ],
+          ),
+        ),
+        width: 350,
+        height: 70 * (globals.currentGame!.totalPlayers() - 1).toDouble(),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+        color: ProjectColors.primarySwatch.shade100,
+      );
+    } else {
       return const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 0));
     }
   }
@@ -82,21 +89,25 @@ class EndOfGamePageState extends State<EndOfGamePage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
                 child: Text(ProjectStrings.eofGameTitle,
                     style: ProjectTextStyles.pageTitleTextStyle),
               ),
               Container(
-                child: 
-                Center(child: 
-                  Column(children: [
-                      ListView.builder( // Widget which creates [ItemWidget] in scrollable list.
-                          shrinkWrap: true,
-                          itemCount: 1, // Number of widget to be created.
-                          itemBuilder: (context, itemIndex) => // Builder function for every item with index.
-                              globals.currentGame!.getWinner(),
-                        )
-                  ],),
+                child: Center(
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        // Widget which creates [ItemWidget] in scrollable list.
+                        shrinkWrap: true,
+                        itemCount: 1, // Number of widget to be created.
+                        itemBuilder: (context,
+                                itemIndex) => // Builder function for every item with index.
+                            globals.currentGame!.getWinner(),
+                      )
+                    ],
+                  ),
                 ),
                 width: 350,
                 height: 70,
@@ -104,35 +115,38 @@ class EndOfGamePageState extends State<EndOfGamePage> {
                 color: ProjectColors.primarySwatch.shade100,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: timerHeight, horizontal: 20),
-                child: Text(roundTitle(), style: ProjectTextStyles.pageTitleTextStyle),
+                padding:
+                    EdgeInsets.symmetric(vertical: timerHeight, horizontal: 20),
+                child: Text(roundTitle(),
+                    style: ProjectTextStyles.pageTitleTextStyle),
               ),
               getHonorableMentionsWidget(),
               Column(
                 children: [
                   Row(
                     children: [
-                      Padding(padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
-                        child:  
-                          ElevatedButton(
-                            child: const Text(ProjectStrings.eofGameScoreboards,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              scoreboards();
-                            },
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 50, 0, 0),
+                        child: ElevatedButton(
+                          child: const Text(ProjectStrings.eofGameScoreboards,
+                              style: ProjectTextStyles.buttonLargeTextStyle),
+                          onPressed: () {
+                            scoreboards();
+                          },
+                        ),
                       ),
-                      Padding(padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
-                        child:  
-                          ElevatedButton(
-                            child: const Text(ProjectStrings.eofGameNewGame,
-                                style: ProjectTextStyles.buttonLargeTextStyle),
-                            onPressed: () {
-                              newGame();
-                            },
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+                        child: ElevatedButton(
+                          child: const Text(ProjectStrings.eofGameNewGame,
+                              style: ProjectTextStyles.buttonLargeTextStyle),
+                          onPressed: () {
+                            newGame();
+                          },
+                        ),
                       )
-                  ],)
+                    ],
+                  )
                 ],
               ),
             ],
